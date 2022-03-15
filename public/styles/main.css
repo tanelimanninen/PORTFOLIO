@@ -249,7 +249,8 @@ strong {
   .left img, .right img, .note-center img {
     max-width: 100%;
     border: 3px solid white;
-    height: 100%}
+    height: 100%;
+    border-radius: 50px;}
 
 .spacer {
   min-height: 4vh;

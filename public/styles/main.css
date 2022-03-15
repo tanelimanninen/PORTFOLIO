@@ -9,11 +9,11 @@
   padding: 0; }
 
 body {
-  font-family: 'Century Gothic', sans-serif;
+  font-family: Tahoma, sans-serif;
   font-weight: bold;
   background: url(../img/landscape2.jpeg);
   background-repeat: no-repeat;
-  background-size: cover;
+  background-size: auto;
   background-position: center; }
 
 h1 {

@@ -247,7 +247,9 @@ strong {
   align-items: center;
 }
   .left img, .right img, .note-center img {
-    max-width: 100%; }
+    max-width: 100%;
+    border: 3px solid white;
+    height: 100%}
 
 .spacer {
   min-height: 4vh;

@@ -11,7 +11,7 @@
 body {
   font-family: 'Century Gothic', sans-serif;
   font-weight: bold;
-  background: url("https://gitlab.labranet.jamk.fi/itffk2022-team10/site/-/blob/master/public/img/landscape2.jpeg");
+  background: url("site/public/img/landscape2.jpeg");
   background-repeat: no-repeat;
   background-size: cover;
   background-position: center; }

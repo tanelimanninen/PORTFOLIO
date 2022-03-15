@@ -13,7 +13,7 @@ body {
   font-weight: bold;
   background: url(../img/landscape2.jpeg);
   background-repeat: no-repeat;
-  background-size: auto;
+  background-size: cover;
   background-position: center; }
 
 h1 {

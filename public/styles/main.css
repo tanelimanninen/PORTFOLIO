@@ -348,6 +348,10 @@ strong {
     max-height: 1024px;
     width: 100%;
     height: auto;}
+  
+  .ritari {
+    font-size: 30px;
+  }
 
   .button-blog {
     border: 0;

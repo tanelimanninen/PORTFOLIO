@@ -18,9 +18,12 @@ body {
 
 .ritari {
   position: relative;
-  font-size: 150px;
+  text-align: center;
+  font-family: Georgia, serif;
+  font-size: 100px;
+  font-weight: bolder;
   color: snow;
-  border: 2px solid lightskyblue;
+  text-shadow: 2px 2px 2px lightskyblue;
   
 }
 
@@ -201,7 +204,7 @@ align-items: center;
       min-height: 100vh; }
 
 .landing-new {
-  height: 100vh;
+  height: 80vh;
   background: url(../img/ritari.png);
   background-position: center;
   background-size: cover;

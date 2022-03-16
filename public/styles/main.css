@@ -269,8 +269,7 @@ strong {
   .left img, .right img, .note-center img {
     max-width: 100%;
     border: 5px solid white;
-    border-radius: 50px;
-    margin: 25%;}
+    border-radius: 50px;}
 
 .spacer {
   min-height: 4vh;
@@ -319,11 +318,12 @@ strong {
     
 
       .landing-new {
-    background: url(SMALL LANDING IMAGE HERE);
-  background-position: center;
-  background-size: cover;
-  background-repeat: no-repeat;
-    width: auto;}
+    background: url(../img/ritari.png);
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+    width: 100%;
+    height: auto;}
     
     .team-member p {
       font-size: 1,5em; } 
@@ -341,12 +341,13 @@ strong {
     font-size: 300%; } }
 @media only screen and (max-width: 768px) {
   .landing-new {
-    background: url(SMALL LANDING IMAGE HERE); 
+    background: url(../img/ritari.png); 
   background-position: center;
   background-size: cover;
   background-repeat: no-repeat;
     max-height: 1024px;
-    width: auto;}
+    width: 100%;
+    height: auto;}
 
   .button-blog {
     border: 0;

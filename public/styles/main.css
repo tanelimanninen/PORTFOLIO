@@ -172,7 +172,7 @@ align-items: center;
     background-color: #74B7DC; }
 
 .landing {
-  background: url(LANDING IMAGE HERE) no-repeat;
+  background: url(../img/ritari.png) no-repeat;
   background-attachment: fixed;
   background-size: cover;
   display: flex;

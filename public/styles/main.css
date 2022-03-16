@@ -23,7 +23,8 @@ body {
   font-size: 100px;
   font-weight: bolder;
   color: snow;
-  text-shadow: 2px 2px 2px lightskyblue;
+  text-shadow: 5px 5px 5px dimgrey;
+  padding-top: 100px;
   
 }
 

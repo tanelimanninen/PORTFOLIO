@@ -217,7 +217,8 @@ align-items: center;
   background-size: cover;
   background-repeat: no-repeat;
   background-attachment: relative;
-  padding-bottom: 5vh; }
+  padding-bottom: 5vh; 
+  border-bottom: 10px double skyblue}
 
 .about, .team, .solution {
   min-height: 100vh;

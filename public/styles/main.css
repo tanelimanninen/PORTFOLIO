@@ -23,8 +23,9 @@ body {
   font-size: 100px;
   font-weight: bolder;
   color: snow;
-  text-shadow: 5px 5px 5px dimgrey;
+  text-shadow: 6px 6px 6px black;
   padding-top: 100px;
+  padding-bottom: 20px;
   
 }
 

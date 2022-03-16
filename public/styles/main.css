@@ -218,7 +218,7 @@ align-items: center;
   background-repeat: no-repeat;
   background-attachment: relative;
   padding-bottom: 5vh; 
-  border-bottom: 10px double skyblue}
+  border-bottom: 5px solid snow}
 
 .about, .team, .solution {
   min-height: 100vh;
@@ -270,7 +270,8 @@ strong {
     max-width: 100%;
     border: 5px solid white;
     height: 100%;
-    border-radius: 50px;}
+    border-radius: 50px;
+    margin: 50%;}
 
 .spacer {
   min-height: 4vh;

@@ -194,7 +194,7 @@ align-items: center;
 
 .landing-new {
   height: 100vh;
-  background: url(LANDING IMAGE HERE);
+  background: url(../img/ritari.png);
   background-position: center;
   background-size: cover;
   background-repeat: no-repeat;

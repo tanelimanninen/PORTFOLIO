@@ -43,6 +43,11 @@ h2 {
 p {
   font-size: 150%; }
 
+p2 {
+  font-size: 150%;
+  text-align: center;
+}  
+
 .footer {
   background: #242424;
   background-position: center;
@@ -206,7 +211,7 @@ align-items: center;
       min-height: 100vh; }
 
 .landing-new {
-  height: 80vh;
+  height: 100vh;
   background: url(../img/ritari.png);
   background-position: center;
   background-size: cover;

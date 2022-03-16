@@ -16,6 +16,14 @@ body {
   background-size: cover;
   background-position: center; }
 
+.ritari {
+  position: relative;
+  font-size: 150px;
+  color: snow;
+  border: 2px solid lightskyblue;
+  
+}
+
 h1 {
   font-size: 3.0em;
   color:snow;

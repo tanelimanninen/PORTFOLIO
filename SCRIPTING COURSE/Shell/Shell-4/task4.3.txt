@@ -1,0 +1,14 @@
+#!/bin/bash
+
+read -p "Anna ohjelma ladattavaksi: " program
+
+sudo apt-get install -y ${program}
+
+if [ ${?} -eq 0 ]
+then
+ echo "Ohjelman lataus onnistui"
+ exit 0
+else
+ echo "Ohjelman lataus epäonnistui"
+ exit 111
+fi

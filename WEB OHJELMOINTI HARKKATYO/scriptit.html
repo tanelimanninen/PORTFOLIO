@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html>
+
+<head><title>Scriptit</title></head>
+
+    <body>
+        <pre>
+            
+
+            //piirretään otsikkopallo
+            function makeCanvas() {
+                var canvas  = document.getElementById("myCanvas");
+                var ctx = canvas.getContext("2d");
+                // circle
+                ctx.beginPath();
+                // x, y, r, start, stop
+                ctx.arc(630,105,100,0,2*Math.PI);
+                ctx.fillStyle="#FFFFFF";
+                ctx.fill();
+                ctx.stroke();
+                
+                // tekstit palloon
+                ctx.fillStyle="#000000";
+                ctx.font="35px Arial";
+                ctx.fillText("Kaupunki",558,100);
+
+                ctx.fillStyle="#000000";
+                ctx.font="30px Arial";
+                ctx.fillText("Sovellus",574,130);
+            }
+
+
+            //React-osuus
+            class App extends React.Component {
+                constructor(props) {
+                  super(props);
+              
+                  this.state = {value: 'Helsinki'}
+                  this.handleChange = this.handleChange.bind(this);
+                }
+              
+                handleChange (event) {
+                  this.setState({value: event.target.value,});
+                }
+              
+                  render() {
+              
+                    return (
+                    
+                    Loppuosan näät lähdekoodista Ctrl + U
+
+                    (en saanut näkymään tekstinä loppua)
+                    
+                    <!--
+                      <div>
+              
+                        <form>
+                          <label>
+                              Valitse Kaupunki <br />
+                              <select value={this.state.value} onChange={this.handleChange}>
+                                  <option value="Helsinki">Helsinki</option>
+                                  <option value="Tampere">Tampere</option>
+                                  <option value="Jyväskylä">Jyväskylä</option>
+                                  <option value="Kuopio">Kuopio</option>
+                                  <option value="Turku">Turku</option>
+                                  <option value="Oulu">Oulu</option>
+                              </select><br />
+                          </label>  
+                        </form>
+              
+              
+                        <div className="valittu">
+                          <span>{this.state.value}</span> <br />
+                          {this.state.value == 'Helsinki'? <img src={"kuvat/helsinki.jpg"} />: null }
+                          {this.state.value == 'Tampere'? <img src={"kuvat/tampere.jpg"} />: null }
+                          {this.state.value == 'Jyväskylä'? <img src={"kuvat/jyvaskyla.jpg"} />: null }
+                          {this.state.value == 'Kuopio'? <img src={"kuvat/kuopio.jpg"} />: null }
+                          {this.state.value == 'Turku'? <img src={"kuvat/turku.jpg"} />: null }
+                          {this.state.value == 'Oulu'? <img src={"kuvat/oulu.jpg"} />: null }
+                        </div>
+                 
+                      </div>
+              
+                    );
+                  }
+                }
+              
+              ReactDOM.render(
+                  <App />,
+                  document.getElementById("sovellus")
+              );
+            -->    
+        </pre>
+    </body>
+
+
+
+</html>

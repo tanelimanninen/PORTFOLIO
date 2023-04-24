@@ -1,0 +1,31 @@
+#!/bin/bash
+
+read -p "Choose an operation. : " o
+read -p "Give a value: " x
+read -p "Give another value: " y
+
+if [ $o = "-" ]
+ then
+  miinuslasku() {
+   echo $(($x-$y))
+  }
+  miinuslasku
+ elif [ $o = "+" ]
+  then
+   pluslasku() {
+    echo $(($x+$y))
+   }
+   pluslasku
+  elif [ $o = "*" ]
+   then
+    kertolasku() {
+     echo $(($x*$y))
+    }
+    kertolasku
+   elif [ $o = "/" ]
+    then
+     jakolasku() {
+      echo $(($x/$y))
+     }
+     jakolasku
+fi

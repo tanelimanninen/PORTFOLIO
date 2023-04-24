@@ -1,0 +1,9 @@
+#!/bin/bash
+
+read -p "Give a file: " NAME1
+
+read -p "Give a new path to the file: " NAME2
+
+A=$(cp $NAME1 $NAME2)
+
+echo "Copied" $NAME1 "to given path!"

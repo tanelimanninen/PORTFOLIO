@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html>
+
+   <head>
+       <style>
+
+           body {
+                background-color: beige;
+                text-align: center;
+                font-family: "Lato", sans-serif;
+            }
+           
+           h1 {
+               font-size: 30px; 
+               border-bottom: 3px solid black;
+               text-align: center;
+            }
+
+            pre {margin: 2em 2em;
+            }
+
+            h2 {
+                margin: 50px;   
+                font-size: 30px; 
+                text-align: center;
+            }
+
+            a {color: rgb(255, 37, 146);}
+
+            img {
+                max-width: 100%;
+                max-height: 30%;
+                border: 2px groove black;
+            }
+
+            h3 {
+                text-align: center;
+                margin: 30px;
+            }
+
+            .linkki {
+                margin: 25px 0px;
+            }
+
+            .teksti {
+                margin: 30px auto;
+                width: 50%;
+                padding: 5px;
+                text-align: left;
+                border-left: 5px solid rgb(238, 42, 75);
+                background-color: mintcream;
+            }
+
+            p {
+                font-size: 18px;
+            }
+
+       </style>
+      <title>Dokumentaatio</title>
+    </head>
+ 
+    <body>
+       <h1>Taneli Manninen / [AA3977] / Harjoitustyön Dokumentaatio</h1>
+        <pre>
+            Web-julkaisujärjestelmät [TTC8630-3002]
+            Päivitetty viimeksi 5.12.2022
+        </pre>
+ 
+        <div>
+            <div class="linkki"><a href="https://student.labranet.jamk.fi/~AA3977/web_julkaisujärjestelmät/harkkatyö/harkkatyolinkit.html">TAKAISIN</a></div>
+        </div>
+    
+        <h2>DOKUMENTAATIO</h2>
+ 
+        <div class="teksti">
+            <h2>Harjoitustyön nimi: Tanelin Harkkatyö Sivusto (verkkokauppa)</h2>
+            <h3>Tekijä: Taneli Manninen [AA3977]</h3>
+            <p>Olen kolmannen vuoden tieto- ja viestintätekniikan opiskelija JAMK:lla. Olen tänä kuluneena syksyllä opiskellut
+                Digitaalisen median moduulia, jonka osana tämä Web-julkaisujärjestelmät kurssikin on. Tässä harjoitustyössä näkyy
+                myös muiden moduulin kurssien vaikutus, kun olen yhdistänyt ja ottanut niistä tiettyjä yksityiskohtia, sekä ideoita
+                tähän työhön. Harjoitustyösivusto on siis tehty yksin, eikä ryhmätyötoteutuksena.
+            </p>
+        </div>
+ 
+        <div class="teksti">
+            <h2>Suunnittelu</h2>
+            <p>
+                Web-julkaisujärjestelmät kurssin harjoitustyön aiheeksi valitsin verkkokauppatyylisen Wordpress-sivuston. Verkkokaupan
+                ei sinänsä tarvitse olla tarkoitettu millekkään tietylle kohderyhmälle. Se on enemmänkin vaan yleinen esimerkki 
+                verkkokaupasta, joka myy joitakin esimerkkituotteita. Ehkä vähän vaatekaupan puolelle kuitenkin suuntautuu.
+                <br>
+                <br>
+                Sivuston rakennetta miettiessä päädyin aluksi seuraavanlaiseen sivustorakenteeseen. Home Page, Shopping Cart, Favourites, Contact Info ja
+                Log In/Sign Up näkymät. 
+                Valitsin sivustolleni teeman pohjaksi Graafinen Suunnittelu-opintojaksolla tekemäni logon. Sain
+                logosta mieleisen värityksen, joka on tumma harmaa höystettynä punaisella ja valkoisella. Tarkat värikoodit ovat: 
+                Punainen (#CC3333), vaaleampi harmaa (#3A3A3A), tummempi harmaa (#161616), sekä tietysti perus valkoinen (#FFFFFF).
+                <br>
+                <br>
+                Harjoitustyöni vaativuus oli suunnitteluvaiheessa kohtalainen. En vielä tiennyt, miten paljon pystyisin käyttämään
+                aikaa tähän työhön, kun oli tiedossa, että muistakin moduulin kursseista tulee harjoitustöitä ja aika on kortilla. 
+                Halusin kuitenkin panostaa tähänkin työhön, joten en poissulkenut korkeita arvosanoja. Sanoisin, että arvosanatavoitteeni
+                oli alussa luultavasti vähintään 3.0. 
+            </p>
+        </div>
+
+        <div class="teksti">
+            <h2>Totetus</h2>
+            <p>
+                Aloitin harkkatyön tekemisen uuden Wordpress-tiedostojen luomisella VPN yhteydellä ubuntuun. Loin uuden tietokannan ja 
+                sain ladattua alustan "harkkatyö"-nimiseen subdirectoryyn /var/www/html/ juureen.
+                <br>
+                <br>
+                Itse Wordpress-sivuston kimppuun lähdin seuraavaksi. Valitsin sivuston pohjateemaksi "Customify" nimisen teeman. Lisäsin 
+                raakaversioina uudet sivupohjat Main page, Log in, sign up, shopping cart, favourites, contact info. Sitten muotoilin 
+                sivuston menu näkymää mieleisekseni. Menun jälkeen tein oman sidebar-widgetin. Tähän kyseiseen widgettiin tuli 
+                tietynlainen galleria-osio, jossa esiteltiin "uutuuksia". Latailin jotain omia retkikuvia, jotka sattuivat tavallaan 
+                sopimaan vaatekauppa-tyylisiksi tuotekuviksi, koristeltuna lyhyillä myyntilauseilla. 
+                <br>
+                <br>
+                Seuraavaksi aloin muotoilemaan etusivun "feed"-tyylistä näkymää. Halusin, että verkkokaupan tyyliin 
+                pääsivulla/avaussivulla käyttäjä pystyy selailemaan kaupan tarjontaa. Asensin Woocommerce-plug inin kauppanäkymän 
+                pohjaksi. Tein ehkä pienen virheen, kun asensin WooCommercen vasta tässä vaiheessa. Jouduin hieman asettelemaan asioita,
+                kuten menua uudelleen. Asensin myös Simple CSS-plugini, koska tarvitsin keinon muokata kauppanäkymän tyylittelyä vielä 
+                syvemmin. Muokkasin ja tyylittelin etusivun/feedin, sekä yksittäisen tuotenäkymän. Samaan tyyliin CSS:ää "sörkkien"
+                jatkoin basket-, checkout-, about us-, sekä my account-näkymien parissa. Nimet sivuston sivuilla vähän muuttuivat
+                osittain tuossa tehdessä, kun mietin rakenteita pienesti uusiksi. 
+                <br>
+                <br>
+                Asensin tässä vaiheessa WPForms-lisäosan ja tein About Us-sivulle uuden sidebar widgetin. Kyseiseen widgetiin tuli 
+                asiakaspalautekysely. Tarkensin huomiota tässä vaiheessa myös eri näyttökokojen asetuksiin. Katsoin, että kaikki sivut 
+                skaalautuvat eri laitteille haluamallani tavalla. Sivusto skaalautuu mukavasti mobiili, tabletti, sekä desktop näkymiin.
+                <br>
+                <br>
+                Tässä vaiheessa deadline alkoi jo häämöttää, joten tein loppusilauksia, testailin asioita ja aloin ennen pitkää 
+                siirtymään dokumentointiin ja harjoitustyön esittelyn pariin.
+                <br>
+                <br>
+                Tässä loppuun vielä kuvaa lisäämästäni CSS-koodista.
+            </p>
+            <img src="https://student.labranet.jamk.fi/~AA3977/web_julkaisuj%C3%A4rjestelm%C3%A4t/harkkatyö/kuvat/css1.png" alt="css1">
+            <img src="https://student.labranet.jamk.fi/~AA3977/web_julkaisuj%C3%A4rjestelm%C3%A4t/harkkatyö/kuvat/css2.png" alt="css2">
+            <img src="https://student.labranet.jamk.fi/~AA3977/web_julkaisuj%C3%A4rjestelm%C3%A4t/harkkatyö/kuvat/css3.png" alt="css3">
+            <img src="https://student.labranet.jamk.fi/~AA3977/web_julkaisuj%C3%A4rjestelm%C3%A4t/harkkatyö/kuvat/css4.png" alt="css4">
+            <img src="https://student.labranet.jamk.fi/~AA3977/web_julkaisuj%C3%A4rjestelm%C3%A4t/harkkatyö/kuvat/css5.png" alt="css5">
+        </div>
+        
+        <div class="teksti">
+            <h2>Itsearviointi</h2>
+            <h3>Harjoitustyön arvosanaehdos: 2.5</h3>
+            <p>
+                Kuten jo aikaisemmin tuli mainittua, deadlinet tulivat lopulta turhan pikaisesti vastaa ja muiden kurssien työt pitivät 
+                minut myös semi kiireisenä. Tästä johtuen en pystynyt mielestäni syventämään työtäni ihan sille tasolle, mille olin ehkä
+                harkinnut pääseväni. Aluksi haavittelemani kolmonen olisi varmaan vaatinut jo sivuston php-koodia syvemmin säätämisen, sekä
+                ohjeessa mainitut tietoturva-asiat ja hakukoneoptimoinnit. 
+                <br>
+                <br>
+                Lopullista arvosanaehdotustani puoltaa mielestäni sivustoni visuaalinen laatu, CSS-koodin syventäminen, sivuston 
+                laadukas skaalautuminen, sekä sivuston käytettävyys. Lisäyksenä myös dokumentointi on laajaa ja laadukasta, sekä 
+                YouTubesta löytyy tekemäni videoesittely. Nämä vaikuttavat varmasti positiivisesti arviointiini.
+            </p>
+            <h3>Työtunnit: 23H</h3>
+        </div>
+    </body>
+ 
+ </html>

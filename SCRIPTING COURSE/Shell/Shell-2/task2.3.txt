@@ -1,0 +1,11 @@
+#!/bin/bash
+
+path="p"
+
+while [ $path != "stop" ]
+ do
+  read -p "Give an object, type stop when finished: " path
+   file -b $path
+  done
+done
+echo $path

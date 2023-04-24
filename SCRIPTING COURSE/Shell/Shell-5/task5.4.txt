@@ -1,0 +1,12 @@
+#!/bin/bash
+
+read -p "Port: " port
+read -p "page: " page
+
+function change_defaults() {
+sed -i "s/80/$port/g" example.conf
+sed -i "s/index.html/$page/g" example.conf
+
+}
+
+change_defaults

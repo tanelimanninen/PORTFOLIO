@@ -1,0 +1,40 @@
+body {
+  background-color: #282c34;
+}
+
+.App {
+  text-align: center;
+}
+
+img {
+  width: 100px;
+  float: left;
+  padding-right: 5px;
+}
+
+.Movie {
+  width: 48%;
+  height: 200px;
+  float: left;
+  margin: 5px;
+  background-color: rgb(213, 213, 0);
+  border: 5px solid whitesmoke;
+}
+
+.MovieTitle {
+  font-weight: bold;
+}
+
+.MovieText {
+  font-size: 70%;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-line-clamp: 3; /* number of lines to show */
+  -webkit-box-orient: vertical;
+}
+
+.GenresText, .VideosText {
+  font-size: 70%;
+  font-weight: bold;
+}

@@ -1,0 +1,13 @@
+#!/bin/bash
+
+read -p "Give a csv file to read: " x
+
+while IFS=";" read -r Manufacturer Model Year Color
+do
+i=$((i+1))
+ echo "---Line ${i}---"
+ echo "Manufacturer: ${Manufacturer}"
+ echo "Model: ${Model}"
+ echo "Year: ${Year}"
+ echo "Color: ${Color}"
+done < <(tail -n +2 $x)

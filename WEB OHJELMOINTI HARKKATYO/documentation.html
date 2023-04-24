@@ -1,0 +1,112 @@
+
+<!DOCTYPE html>
+<html>
+  <head>
+    <style>
+            body {background-color: beige;}
+           
+           h1 {font-family: 'Trebuchet MS', sans-serif;
+               font-size: 30px; 
+               border-bottom: 3px solid black;
+            }
+
+            
+
+            h2 {font-family: 'Trebuchet MS', sans-serif;
+               font-size: 20px;
+               margin-left: px;
+            }
+
+            a {color: rgb(255, 37, 146);}
+            
+            div {width: 50%;
+                padding: 5px;
+                text-align: left;
+                border-left: 5px solid rgb(238, 42, 75);
+                background-color: mintcream;
+                margin-bottom: 25px;
+            }
+
+    </style>
+
+    <title>Harjoitustyö / Dokumentaatio</title>
+
+  </head>
+
+  <body>
+    
+    <h1>Manninen Taneli [AA3977] - Harjoitustyö / Dokumentaatio</h1>
+
+    <pre>
+      Web-ohjelmointi [TTMS0500-3007]
+    </pre>
+    <pre>
+      Palautuksen päivämäärä: 9.8.2022
+    </pre>
+
+    <div>
+      <h2>Harjoitustyön nimi - Kaupunkisovellus</h2>
+    </div>
+    
+    <div>
+        <h2>Suunnittelu</h2>
+        <p>
+        Ideana harjoitustyölleni on yksinkertainen sovellus, jossa käyttäjä voi valita 
+        select-elementistä kaupungin. Tämän jälkeen sovellus näyttää käyttäjälle kuvan
+        valitsemastaan kaupungista. Mahdollisesti muitakin tietoja palautetaan valitusta kaupungista,
+        mutta tämä selkenee työtä tehdessä. Pyrin kuitenkin pitämään toteutuksen melko simppelinä,
+        koska näin kesäaikaan pidän työtunnit rajallisina, mutta motiivina työlle on kuitenkin
+        kurssiarvosanan korotus.
+        </p>
+
+    <p>Aion käyttää harjoitustyössäni JavaScriptiä Reactia hyödyntäen.</p>
+    </div>
+
+    <div>
+        <h2>Totetus</h2>
+        <p>
+        Lähdin aluksi tekemään nettisivulle pohjaa. Kirjasin CSS-tiedostoon tyylit. Tyylittelin 
+        sivun hienolla taustakuvalla ja päätin tehdä kurssilla opitulla canvas-elementillä myös 
+        sisältöä sivuun. Päädyin jakamaan Script-koodin kahteen eri js-tiedostoon, vaikka tiesin 
+        sen ehkä hidastavan hieman sivun lataamista. En kuitenkaan huomannut kokeillessa sen 
+        olleen ongelma. Toiseen tein Canvas tyylittelyt, kun taas toiseen Reactia. </p>
+        <p>
+        Eniten aikaa ja vaivaa on kulunut sovelluksen logiikan koodaamisessa. Elementtien
+        rakennuksessa Reactilla ei niinkään ollut ongelmia, mutta kuvien tuominen sovellukseen
+        aiheutti päänvaivaa ja käyttäjän valintojen kautta tietojen tuominen vaatii vielä työtä.
+        React-koodissa käytetään React komponenttia ja handleChange-funktiolla luetaan käyttäjän
+        valinnat select-elementissä. This.setState-metodia hyödyntäen saadaan valinnan mukaiset
+        tiedot näkymään uudessa div-elementissä. Tässä tapauksessa tiedot ovat kaupungin nimi sekä
+        kuva kyseisestä kohteesta. 
+        </p>  
+    </div>
+
+    <div>
+      <h2>Itsearviointi</h2>
+      <p>Arvosana-ehdotukseni: 2</p>
+      <p>
+        Ajan käyttöni oli hyvin rajoitettua tähän projektiin, joten en saanut välttämättä ihan
+        kaikkea suunniteltuani tehtyä, kuten esimerkiksi muita tietoja joita olisi voinut ladata
+        valitusta kohteesta. Merkittävin ja minua motivoivin puoli tälle "Kaupunkisovellukselle"
+        olikin sen visuaalisuus, mutta pääsin mukavasti syventymään myös Reactin pariin, vaikka 
+        lopputulos ei olisikaan kovinkaan massiviinen kasa koodia. Tiedostan, että sovellus olisi
+        voinut olla monipuolisempi, sekä samalla kunniahimoisempi. Kuitenkin mielestäni
+        harjoitustyöni arvosana-ehdotusta puoltaa dokumentaation laatu, tekemäni videoesittely, sekä
+        itse työn selkeä ja tyylikäs käyttöliittymä. Aloittelevalle Reactin käyttäjälle työssä oli 
+        sopivasti haastetta ja työtuntejakin kyllä kului sen parissa reilut 20h.
+      </p>
+    </div>
+
+    <div>
+        <h2>Työtunnit</h2>
+        <p>Suunnittelu: 2h</p>
+        <p>Ohjelmointi: 15h</p>
+        <p>Dokumentointi: 4h</p>
+    </div>
+
+    <div>
+      <h2>Taneli Manninen [AA3977]</h2>
+    </div>
+
+  </body>
+</html>

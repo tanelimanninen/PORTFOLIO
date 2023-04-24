@@ -1,0 +1,11 @@
+#!/bin/bash
+
+read -p "Give a path to directory: " p
+
+count_objects() {
+
+dir=$(ls $p | wc -l)
+ echo $dir
+}
+
+count_objects

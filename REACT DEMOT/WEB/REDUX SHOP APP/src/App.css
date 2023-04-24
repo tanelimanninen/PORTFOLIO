@@ -1,0 +1,91 @@
+.App {
+  text-align: center;
+}
+
+.Page {
+  width: 70%;
+}
+
+.Shopping-Cart {
+  width: 30%;
+  float: right;
+}
+
+.Feed {
+  width: 100%;
+  margin-top: 50px;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, auto));
+  gap: 1.5rem;
+  padding: 20px;
+}
+
+.ui.cards > .card > .image {
+  height: 250px;
+  padding: 20px;
+  background: #fff;
+  margin-bottom: 50px;
+}
+
+.ui.cards > .card > .image > img {
+  height: 100%;
+  max-width: 100%;
+  width: auto;
+}
+
+.ui.cards > .card > .content > .header {
+  height: 48px;
+  overflow: hidden;
+  font-weight: 800;
+}
+
+.ui.cards > .card .meta.price {
+  margin-bottom: 10px;
+  font-size: 18px;
+  color: green;
+  font-weight: 600;
+}
+
+.FeedHeadline {
+  text-align: left;
+  margin-left: 20px;
+}
+
+p {
+  font-size: small;
+}
+
+/*img {
+  width: 80%;
+  height: 80%;
+  vertical-align: center;
+  margin-top: 50px;
+}*/
+
+.header {
+  font-weight: bolder;
+}
+
+.category {
+  margin-top: 10px;
+}
+
+.Cart-Header {
+  text-align: center;
+}
+
+.Add-Button {
+  color: green;
+  float: right;
+  border: 2px solid green;
+  border-radius: 10%;
+  padding: 2px;
+  margin-bottom: 10px;
+}
+
+.remove-button {
+  color: red;
+  border: 2px solid red;
+}
+
+

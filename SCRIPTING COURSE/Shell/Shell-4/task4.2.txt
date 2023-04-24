@@ -1,0 +1,12 @@
+#!/bin/bash
+
+count=1
+MAXCOUNT=3
+
+while [ "$count" -le $MAXCOUNT ]; do
+ number[$count]=$RANDOM
+ let "count += 1"
+done
+
+echo "${number[*]}"
+logger -p user.info "${number[*]}"

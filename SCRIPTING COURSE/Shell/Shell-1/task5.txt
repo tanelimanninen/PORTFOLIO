@@ -1,0 +1,11 @@
+#!/bin/bash
+
+read -p "Give a file name form the home directory: " NAME
+
+read -p "Give a second file from the home directory: " NAME1
+
+read -p "Give one more file from the home directory: " NAME3
+
+B=$(rm $NAME $NAME1 $NAME3)
+
+echo "I deleted following files: " $NAME $NAME1 $NAME3

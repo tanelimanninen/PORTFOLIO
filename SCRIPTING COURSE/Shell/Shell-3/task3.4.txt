@@ -1,0 +1,16 @@
+#!/bin/bash
+
+paths=()
+p="path"
+
+while [ $p != "z" ]
+do
+ read -p "Give a path to directory: " p
+  count_objects() {
+
+  dir=$(ls $p | wc -l)
+  paths+=($dir)
+  echo ${paths[@]}
+ }
+count_objects
+done

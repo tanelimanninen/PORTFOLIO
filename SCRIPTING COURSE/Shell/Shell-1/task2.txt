@@ -1,0 +1,9 @@
+#!/bin/bash
+
+read -p "Give the new file a name: " NAME
+
+VAR1=$(touch /home/user/$NAME)
+
+VAR2=$(date +"%y-%m-%d")
+
+echo $NAME $VAR2

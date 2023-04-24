@@ -1,0 +1,45 @@
+body {
+  font-family: 'Oswald', sans-serif;
+}
+
+h1 {
+  background-color: rgb(34, 0, 155);
+  text-align: center;
+  color: white;
+  padding: 5px 0;
+  border-radius: 0 0 2px 2px;
+}
+
+ul {
+  list-style-type: square;
+  margin: 20px 0 20px 0;
+}
+
+input[type=text] {
+  border: 1px solid #ccc;
+  padding: 5px;
+  width: 300px;
+  font-size: 15px;
+}
+
+input[type=submit] {
+  border: 1px solid #ccc;
+  margin-left: 15px;
+  padding: 5px 15px;
+  font-size: 16px;
+}
+
+#root {
+  width: 400px;
+  background-color:rgb(245, 245, 141);
+  border-radius: 3px;
+  padding: 0 15px 15px;
+  margin: 10px auto;
+  border: 1px solid #ddd;
+}
+
+span {
+  cursor: pointer;
+  color: red;
+  font-weight: bold;
+}

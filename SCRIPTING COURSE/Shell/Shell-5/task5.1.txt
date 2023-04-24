@@ -1,0 +1,17 @@
+#!/bin/bash
+
+x="x"
+values=()
+
+while [ $x != "" ]
+do
+ read -p "Give me values. Press Enter only when finished: " x
+  values+=($x)
+done
+
+echo ${values[*]} | tee -a animal.txt
+
+while read line
+do
+  echo ${line}
+done < animal.txt

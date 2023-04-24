@@ -1,0 +1,19 @@
+#!/bin/bash
+
+read -p "Choose an operation. : " o
+read -p "Give a value: " x
+read -p "Give another value: " y
+
+if [ $o = "-" ]
+ then
+  echo $(($x-$y))
+ elif [ $o = "+" ]
+  then
+   echo $(($x+$y))
+  elif [ $o = "*" ]
+   then
+    echo $(($x*$y))
+   elif [ $o = "/" ]
+    then
+     echo $(($x/$y))
+fi

@@ -1,0 +1,16 @@
+#!/bin/bash
+
+read -p  "Annappa mulle url: " URL
+
+pingaus() {
+ ping -c 1 ${URL}
+
+if [ ${?} -ne 0 ]
+then
+ echo "Can't ping to ${URL}"
+ exit 1
+fi
+}
+
+pingaus
+exit 0

@@ -1,0 +1,14 @@
+#!/bin/bash
+
+x="x"
+inputs=()
+while [ $x != "exit" ]
+do
+ read -p "Give values, write exit when finished: " x
+  inputs+=($x)
+done
+
+for((i=0;i<${#inputs[@]};i++))
+do
+    echo "$i: ${inputs[$i]}"
+done

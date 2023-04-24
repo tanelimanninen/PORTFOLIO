@@ -1,0 +1,12 @@
+#!/bin/bash
+
+read -p "Type in a username: " x
+
+if [ $(id -u $x) ]
+then
+ echo "Username taken"
+else
+ echo "Username accepted"
+ useradd $x
+ mkhomedir_helper $x
+fi

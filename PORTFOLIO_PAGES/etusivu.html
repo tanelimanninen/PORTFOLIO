@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html lang='en'>
+
+<head>
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+    <meta charset="UTF-8">
+    <meta name="description" content="Portfolio">
+    <meta name="keywords" content="HTML, CSS">
+    <meta name="author" content="Taneli Manninen">
+    <script src="https://kit.fontawesome.com/0ea882bd9e.js" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    
+    <title>Taneli Manninen</title>
+
+</head>
+    
+    <body class="bg-dark">
+        <section class="bg-dark text-white p-4 p-md-5 text-center">
+            <div class="container">
+                <h1 class="display-4 mb-sm-5">Taneli Manninen</h1>
+            </div>
+        </section>
+
+        <!--menupalkki-->
+        <nav class="navbar navbar-expand-sm bg-secondary navbar-dark p-2">
+            <div class="container">
+
+                <!--menunappi, "hampurilaislogo", md-breakpointista alaspäin-->
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navmenu">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+
+                <!--menulista-->
+                <div class="collapse navbar-collapse" id="navmenu">
+                    <ul class="navbar-nav me-auto mb-2 mb-md-0 mx-md-3 mx-lg-5">
+                        
+                        <li class="nav-item">
+                            <a href="etusivu.html" class="nav-link">Etusivu</a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="portfolioni.html" class="nav-link">Portfolio / CV</a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="yhteystiedot.html" class="nav-link">Yhteystiedot</a>
+                        </li>
+                        
+                    </ul> 
+                </div>
+            </div>
+        </nav>
+        
+        <!--teksti-osio alkaa-->
+        <section class="bg-dark text-white px-5 p-md-5 text-center my-5">
+            
+            <div class="container">
+                <div class="d-lg-flex">
+                    <!--valokuva minusta (vain mobiilikoko)-->
+                    <div class="mx-auto w-sm-25 d-md-none">
+                        <img src="styles/IMG_0262.jpg" class="img-float mx-auto w-75 w-sm-25 my-2">
+                    </div>
+
+                    <div class="mx-auto my-auto w-sm-25">
+                        <h2 class="display-8 my-5"><i class="fas fa-info-circle"></i> Yleistietoa minusta</h2>
+                        <p>
+                            Nimeni on Taneli Manninen. Olen 23-vuotias ja suoritan insinöörin tutkintoa tieto- ja viestintätekniikan opiskelijana Jyväskylän ammattikorkeakoulussa (JAMK).
+                        </p>
+                        <p>
+                            Minulla on kolmas opiskeluvuosi meneillään ja olen jo suuntanut tavoitteitani ja erikoistumistani sovelluskehityksen, web-kehityksen ja digitaalisen median moduuleihin. Olen hyvin luova persoona, joten minua luonnollisesti inspiroi kaiken visuaalisen kanssa työskentely. Olen myös todella kiinnostunut käytettävyydestä ja käyttäjäläheisyydestä sovelluskehityksessä.
+                        </p>  
+
+                        
+                        <h2 class="display-8 my-5"><i class="fas fa-user-alt"></i> Arvoistani</h2>
+                        <p>
+                            Arvostan todella paljon yksilön aktiivisuutta, pitkäjänteisyyttä, oma-aloitteisuutta ja tietysti luovuutta. Näitä pyrin itsessäni kehittämään päivittäin. 
+                        </p>    
+                        <p>
+                            Itse harjoitan ominaisuuksiani jatkuvasti vapaa-ajallani, esimerkiksi muusikkiharrastukseni kautta. Soitan bändissä ja tuotan omia pikku projekteja someen, jossa luovuuteni ja omat energiani pääsevät ns. "kukkimaan".
+                        </p> 
+                    </div>
+
+                    <!--valokuva minusta (desktop)-->
+                    <div class="mx-auto w-sm-25 d-none d-md-block">
+                        <img src="styles/IMG_0262.jpg" class="img-float mx-auto w-75 w-sm-25 my-2">
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!--listaosio alkaa (mobile)-->
+        <section class="bg-dark text-white px-5 p-md-5 text-center my-5 d-sm-none">
+            <div class="container">
+                <div class="d-lg-flex">
+                <div class="mx-auto justify-content-center my-auto w-sm-25 my-sm-5">
+                    <div>
+                        <h4 class="display-8 my-4"><i class="fas fa-laptop"></i>
+                            Tutut ohjelmointikielet:
+                        </h4>       
+                        <ul class="text-primary font-weight-bold my-4" style="list-style-type: disc;">
+                            <li class="my-2">React, React Native</li>
+                            <li class="my-2">JavaScript</li>
+                            <li class="my-2">Kotlin</li>
+                            <li class="my-2">HTML</li>
+                            <li class="my-2">CSS</li>
+                            <li class="my-2">Python</li>
+                            <li class="my-2">C#</li>
+                            <li class="my-2">PHP</li>
+                            <li class="my-2">SQL</li>
+                        </ul>
+                    </div>    
+                    
+                    
+                    <div>
+                        <h4 class="display-8 my-4"><i class="fas fa-info"></i>
+                            Muut keskeiset:
+                        </h4>       
+                        <ul class="text-primary font-weight-bold my-4" style="list-style-type: disc">
+                            <li class="my-2">Node.js</li>
+                            <li class="my-2">Bootstrap</li>
+                            <li class="my-2">Visual Studio Code</li>
+                            <li class="my-2">Android Studio</li>
+                            <li class="my-2">Visual Studio 2022</li>
+                            <li class="my-2">Adobe Creative Cloud</li>
+                            <li class="my-2">Wordpress</li>
+                            <li class="my-2">Git</li>
+                            <li class="my-2">Blender</li>
+                        </ul>
+                    </div> 
+                </div>
+                </div>
+            </div>
+        </section>
+
+        <!--listaosio alkaa (desktop)-->
+        <section class="bg-dark text-white px-5 p-md-5 text-center my-5 d-none d-sm-block">
+
+            <div class="container">
+                <div class="d-lg-flex">
+
+                    <div class="mx-auto my-auto w-sm-50">
+                        <h4 class="display-8 my-2"><i class="fas fa-laptop"></i>
+                            Tutut ohjelmointikielet:
+                        </h4>       
+                        <ul class="text-primary font-weight-bold my-4" style="list-style-type: none;">
+                            <li class="my-2">React, React Native</li>
+                            <li class="my-2">JavaScript</li>
+                            <li class="my-2">Kotlin</li>
+                            <li class="my-2">HTML</li>
+                            <li class="my-2">CSS</li>
+                            <li class="my-2">Python</li>
+                            <li class="my-2">C#</li>
+                            <li class="my-2">PHP</li>
+                            <li class="my-2">SQL</li>
+                        </ul>
+                    </div>
+
+                    <div class="mx-auto w-sm-50">
+
+                        <h4 class="display-8 my-2"><i class="fas fa-info"></i>
+                            Muut keskeiset:
+                        </h4>       
+                        <ul class="text-primary font-weight-bold my-4" style="list-style-type: none">
+                            <li class="my-2">Node.js</li>
+                            <li class="my-2">Bootstrap</li>
+                            <li class="my-2">Visual Studio Code</li>
+                            <li class="my-2">Android Studio</li>
+                            <li class="my-2">Visual Studio 2022</li>
+                            <li class="my-2">Adobe Creative Cloud</li>
+                            <li class="my-2">Wordpress</li>
+                            <li class="my-2">Git</li>
+                            <li class="my-2">Blender</li>
+                        </ul>
+                        
+                    </div>
+                </div>
+            </div>
+
+        </section>
+        <!--listaosio loppuu-->
+        
+        <!--alalinkit-->
+        <footer class="bg-secondary text-center text-white" style="background-color: #f1f1f1;">
+            <!-- Grid container -->
+            <div class="container pt-4">
+              <section class="mb-4">
+                <!--Facebook-->
+                <a
+                  class="btn btn-link btn-floating btn-lg text-dark m-1"
+                  href="https://www.facebook.com/taneli.manninen.58"
+                  role="button"
+                  data-mdb-ripple-color="dark"
+                  ><i class="fab fa-facebook-f"></i
+                ></a>
+          
+                <!-- Instagram -->
+                <a
+                  class="btn btn-link btn-floating btn-lg text-dark m-1"
+                  href="https://www.instagram.com/ttaneli/?hl=fi"
+                  role="button"
+                  data-mdb-ripple-color="dark"
+                  ><i class="fab fa-instagram"></i
+                ></a>
+
+                <!--Youtube-->
+                <a
+                class="btn btn-link btn-floating btn-lg text-dark m-1"
+                href="https://www.youtube.com/channel/UCX5h0MEQmSaotcZ8XCvlJYw"
+                role="button"
+                data-mdb-ripple-color="dark"
+                ><i class="fab fa-youtube"></i
+                ></a>
+          
+                <!-- Linkedin -->
+                <a
+                  class="btn btn-link btn-floating btn-lg text-dark m-1"
+                  href="https://www.linkedin.com/in/taneli-manninen-389188234/"
+                  role="button"
+                  data-mdb-ripple-color="dark"
+                  ><i class="fab fa-linkedin"></i
+                ></a>
+                <!-- Github -->
+                <a
+                  class="btn btn-link btn-floating btn-lg text-dark m-1"
+                  href="https://github.com/tanelimanninen/PORTFOLIO"
+                  role="button"
+                  data-mdb-ripple-color="dark"
+                  ><i class="fab fa-github"></i
+                ></a>
+              </section>
+              <!-- Section: Social media -->
+            </div>
+            <!-- Grid container -->
+          
+            <div class="bg-secondary text-center p-3">
+                <i class="far fa-envelope"></i>  aa3977@student.jamk.fi<br>
+                Made by Taneli Manninen with Bootstrap<br>
+                2023
+            </div>
+
+          </footer>
+        
+        <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+        <script src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+    </body>
+    
+</html>

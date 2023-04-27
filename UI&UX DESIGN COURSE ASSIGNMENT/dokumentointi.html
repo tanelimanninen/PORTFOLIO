@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html>
+
+   <head>
+       <style>
+           
+           body {
+                background-color: beige;
+                text-align: center;
+                font-family: "Lato", sans-serif;
+            }
+           
+           h1 {
+               font-size: 30px; 
+               border-bottom: 3px solid black;
+               text-align: center;
+            }
+
+            pre {margin: 2em 2em;
+            }
+
+            h2 {
+                margin: 50px;   
+                font-size: 30px; 
+                text-align: center;
+            }
+
+            a {color: rgb(255, 37, 146);}
+
+            img {
+                max-width: 100%;
+                max-height: 30%;
+                border: 2px groove black;
+            }
+
+            h3 {
+                text-align: center;
+                margin: 30px;
+            }
+
+            .linkki {
+                margin: 25px 0px;
+            }
+
+            .teksti {
+                margin: 30px auto;
+                width: 50%;
+                padding: 5px;
+                text-align: left;
+                border-left: 5px solid rgb(238, 42, 75);
+                background-color: mintcream;
+            }
+
+            p {
+                font-size: 18px;
+            }
+
+       </style>
+      <title>Raportti</title>
+   </head>
+
+   <body>
+      <h1>Taneli Manninen [AA3977] / Harjoitustyön Raportti</h1>
+
+    <pre>
+        Käyttöliittymä ja käytettävyys [TTC8640-3001]
+        Päivitetty viimeksi 15.12.2022
+    </pre>
+
+    <div>
+      <div class="linkki"><a href="https://student.labranet.jamk.fi/~AA3977/kayttoliittyma/harkkatyö/harkkatyo.html">TAKAISIN</a></div>
+  </div>
+
+  <h2>RAPORTTI</h2>
+ 
+        <div class="teksti">
+            <h2>Harjoitustyön nimi: Music Forum - Applikaatio/Palvelu</h2>
+            <h3>Tekijä: Taneli Manninen [AA3977]</h3>
+            <p>Olen kolmannen vuoden tieto- ja viestintätekniikan opiskelija JAMK:lla. Olen tänä kuluneena syksyllä opiskellut
+                Digitaalisen median moduulia, jonka osana tämä Käyttöliittymä ja käytettävyys kurssikin on. Tässä harjoitustyössä näkyy
+                myös muiden moduulin kurssien vaikutus, kun olen yhdistänyt ja ottanut niistä tiettyjä yksityiskohtia, sekä ideoita
+                tähän työhön. Harjoitustyösivusto on siis tehty yksin, eikä ryhmätyötoteutuksena.
+            </p>
+        </div>
+
+        <div class="teksti">
+         <h2>Suunnittelu</h2>
+         <p>
+            Music Forum käyttöliittymän suunnittelu alkoi suunnilleen opintojakson puolivälissä. Ideani oli luoda applikaatio, nettipalvelu
+            keskustelu foorumi muusikoille tai oikeastaan kaikille musiikin parissa puuhaaville. Sivusto olisi vähän facebookin tapainen paikka
+            musiikkia harrastaville, jossa pystyisi etsimään soittokavereita, aloittamaan projekteja, vaihtelemaan ideoita, jakamaan omaa
+            osaamista, sekä mahdollisesti myymään käytettyjä musatarvikkeita.
+            <br>
+            <br>
+            Suomessa löytyy samalla idealla toimiva "Muusikoiden.net" niminen
+            sivusto, mutta se on todella alkeellinen ei skaalautuva web-sivusto pelkästään desktopille. Music Forum-sivustoni olisi modernimpi
+            skaalautuva mobiilikeskeinen palvelu.
+         </p>
+     </div>
+
+     <div class="teksti">
+      <h2>Totetus</h2>
+      <p>
+         Työskentely tämän harjoitustyön parissa alkoi muutaman käyttäjäpersoonan/käyttäjäryhmän suunnittelulla ja ylös kirjaamisella. Yritin
+         keksiä mahdollisimman uskottavat käyttäjätarinat musiikkiharrastajasta, sekä musiikkia työkseen tekevästä tuottavasta luoden variaatiota.
+         Myös käyttäjän asiakaspolku syntyi, että saisin hyvän kartoitettua hyvän toiminnan kulun mihin keskittyä lopullisessa mock upissa.
+          <br>
+          Seuraavaksi olikin sivuston layoutin suunnittelun ja mallailun muoto. 
+          <br>
+          <br>
+          <h3>Rautalankamalli - Mobiili</h3>
+          Rakensin figmaa käyttäen ensin mobiiliversion pohjan, johon tuli kaksi sivua. Rautalankamallissa otin siis jo huomioon valitsemani 
+          toiminnon kulun sovelluksessa esimerkkinä. Nämä kaksi sivua olivat etusivu näkymä, sekä tee julkaisu näkymä.
+          Molempiin näkymiin kuului ylämenu ja alafooter. Ylämenuun tuli seuraavaa vasemmalta oikealle. menu icon 
+          dropdown metodilla mietittynä. Forumin logo keskelle toimiakseen samalla "palaa etusivulle" nappina. Logon oikealle puolelle kynäikoni
+          julkaisun kirjoittamista varten. Kynäikonin viereen lopuksi vielä search ikoni, jos käyttäjä tahtoisi etsiä jotain hakusanalla.
+          <br>
+          Alafooter koostui mobiiliapplikaatioissa hyvin usesin käytetyistä pikanäppäimistä. Vasemmalta oikealle siinä oli kotipainike, joka toimii
+          logon tapaan palaa etusivulle toimintona. Keskellä on profiili-ikoni, josta voi halutessaan siirtyä omaan profiilinäkymään. Viimeisenä
+          vasemmalta löytyy kansiopainike, josta pääsee selailemaan omia tiedostoja/julkaisuja.
+          <br>
+          <br>
+         Etusivunäkymän sisältö koostuu feedistä, jota selaillen käyttäjä näkee ihmisten julkaisuja. Yksittäisessä julkaisussa on käyttäjänimi,
+         päivämäärä, sijainti, julkaisun otsikko, itse kirjoitus, sekä muutama pikanäppäin. Näppäimet ovat "lisää suosikkeihin"/kirjainmerkkeihin"
+         toiminto, sekä kommentointi. Toisessa feedin esimerkkijulkaisussa näkyy mediaplayer, jota painamalla voi julkaisuun linkitetyn mediatiedoston
+         soittaa.
+          <br>
+          <br>
+         Julkaisun teko näkymä sisältää kirjoituspalkit otsikolle ja tekstille. Kirjoituspalkkien alla on pikanäppäimiä, jotka ovat linkitä 
+         mediatiedosto, liitä kuva, liitä sijainti ja additional settings (julkaisun tyylittely, fontin jne.). Alimpana vielä isolla julkaisunappi.
+         Näkymän vasemassa yläkulmassa vielä palaa etusivulle näppäin.
+          <br>
+          <br>
+          <h3>Rautalankamalli - Desktop</h3> 
+          Näin sivustolleni tarpeelliseksi luoda myös desktop version. Tämä versio mukaili hyvin pitkälti aluksi tekemääni mobiiliversiota. Desktop
+          versioni rautalankamalli sisälsi myös kaksi sivua. Mobiiliversiosta poiketen kaikilla sivuilla toistui vain ylämenu palkki, alhaalla ei
+          mitään. 
+          <br>
+          Yläpalkki sisälsi vasemmalta lähtien menu iconin, tee julkaisu tekstinapin, mun profiili tekstinapin, logon etusivunappina, tiedostoni 
+          tekstinapin, sekä searchpalkin.
+          <br>
+         Etusivu näkymä koostui taas feedistä, skaalautuen toki hieman eri tavalla. Feedin yläpuolella tällä kertaa toinen teejulkaisunappi.
+         <br>
+         Tee julkaisu näkymä koostui desktop versiossa suurin piirtein samalla tavalla kuin mobiilissakin. Palaa etusivulle näppäin siirtyi keskelle,
+         sekä julkaise näppäin siirtyi pikanäppäinten viereen samalle linjalle pystysuunnassa.
+         <h3>MOCK UPIT</h3> 
+         Tyylittelin Music Forum sivustoni värityksen melko tummalla teemalla. Graafinen Suunnittelu opintojaksolla tekemäni logo antoi tähän 
+         inspiraatiota. Sivuston väreiksi tuli näin tumma harmaa (#161616), turkoosi (#8CF1FF), vaaleampi harmaa (#3A3A3A), sekä perus valkoinen
+         (#FFFFFF). Kuvitukseksi lisäsin itse logon ja feediin profiilikuvat julkaisuille. Erinäisiin nappeihin lisäilin hover ja onclick toimintoja
+         muuttamaan värejä ja tekemään pientä liikettä. Yleiseksi fontiksi valitsin Archivo Blackin.
+         <br>
+         Näitä voi kokeilla ja tutkiskella prototypeissä, jotka löytyvät palautukseni linkeistä.
+       </p>
+  </div>
+
+  <div class="teksti">
+   <h2>Itsearviointi</h2>
+   <h3>Harjoitustyön arvosanaehdos: 3-4</h3>
+   <p>
+      Harjoitustyöni lopputulos on mielestäni varsin toimiva ja tyylikäs applikaatio/sivusto. Mock uppini olisivat ihan hyviä pohjia lähteä rakentamaan
+      varsinaista sovellusta. Toki tässä tapauksessa olisi hyvä, että työssäni esiintyviä featureja ja mahdollisia sivuja olisi mietitty enemmän 
+      pidemmälle pelkän napin lisäksi.
+      <br> 
+      Aika oli melko rajoitettua minulla tätä työtä varten, kun oli samanaikaisesti 5 muutakin harkkatyötä. Oli siis pakko rajata tämä työ
+      kahden sivun muottiin ja päätin keskittyä kunnolla yhteen käyttäjätarinaan ja sitä kautta featureen. Sivustoni on kuitenkin mielestäni
+      visuaalisesti tyylikäs sekä selkeä. Varsinkin mobiiliversio, johon erityisesti panostin. Käytettävyyttä on mietitty, nappien sijainnit, 
+      toiminnot, mitä käyttäjä haluaa sivustolla tehdä jne. Työni loppuraportti on mielestäni mittava ja ajatuksella tehty, joten senkin luulisi 
+      vaikuttavan arvosanaani puoltavasti!
+       <br>
+       <br>
+       Näistä mainitsemista seikoista johtuen antaisin Käyttöliittymä ja käytettävyys opintojakson harjoitustyölleni arvosanaksi vähintään 3,
+       mutta korkeintaan 4.
+
+   </p>
+   <h3>Työtunnit: 22H</h3>
+</div>
+
+   </body>
+
+</html>

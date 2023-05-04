@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 487 690">
+  <defs>
+    <style>
+      .cls-1 {
+        stroke: #000;
+        stroke-miterlimit: 10;
+        stroke-width: 10px;
+      }
+    </style>
+  </defs>
+  <g id="Layer_1" data-name="Layer 1">
+    <path class="cls-1" d="M192.04,108.3v229.99c0,10.98-12.7,17.09-21.28,10.24L16.11,225.08c-5.68-4.53-5.44-13.24,.49-17.45L171.35,97.62c8.68-6.17,20.7,.04,20.7,10.68Z"/>
+  </g>
+  <g id="Layer_2" data-name="Layer 2">
+    <path class="cls-1" d="M474,288.57H160.36V158.92H453.06c11.56,0,20.94,9.79,20.94,21.86v107.79Z"/>
+  </g>
+  <g id="Layer_2_copy_2" data-name="Layer 2 copy 2">
+    <path class="cls-1" d="M453.06,595H85.52c-5.78,0-10.47-4.89-10.47-10.93v-107.79c0-6.04,4.69-10.93,10.47-10.93H474v107.79c0,12.07-9.37,21.86-20.94,21.86Z"/>
+  </g>
+  <g id="Layer_2_copy" data-name="Layer 2 copy">
+    <path class="cls-1" d="M474,182.09v391.06c0,12.07-9.79,21.86-21.86,21.86h-107.79V160.23h107.79c12.07,0,21.86,9.79,21.86,21.86Z"/>
+  </g>
+</svg>

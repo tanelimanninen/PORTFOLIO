@@ -5,10 +5,14 @@ This project is a fullstack application for Solita's Dev Academy pre assignment.
 
 npm requirements:
 
-npm install express |
-npm install mongoose |
-npm install cors |
-npm install --save-dev nodemon |
-npm install dotenv --save |
+npm install express 
+
+npm install mongoose 
+
+npm install cors 
+
+npm install --save-dev nodemon 
+
+npm install dotenv --save
 
 Owner: Taneli Manninen

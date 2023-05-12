@@ -6,7 +6,9 @@ This project is a fullstack application for Solita's Dev Academy pre assignment.
 
 ---------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
-## npm requirements:
+## Requirements:
+
+Node.js installation
 
 npm install express 
 
@@ -17,6 +19,9 @@ npm install cors
 npm install --save-dev nodemon 
 
 npm install dotenv --save
+
+npm install mongodb csv-parser
+
 
 ---------------------------------------------------------------------------------------------------------------------------------------------------------------------
 

@@ -1,8 +1,8 @@
-const index = require('./index') // varsinainen Express-sovellus
+const app = require('.index') // varsinainen Express-sovellus
 const http = require('http')
 const config = require('./utils/config')
 
-const server = http.createServer(index)
+const server = http.createServer(app)
 
 server.listen(config.PORT, () => {
   console.log(`Server running on port ${config.PORT}`)

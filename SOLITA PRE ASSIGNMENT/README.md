@@ -20,7 +20,11 @@ npm install --save-dev nodemon
 
 npm install dotenv --save
 
-npm install mongodb csv-parser
+npm install mongodb
+
+npm i --save csvtojson
+
+Bash command: curl -X POST -H "Content-Type: application/json" -d '{"path": "path/to/your/csv/file.csv"}' http://localhost:3000/import-csv
 
 
 ---------------------------------------------------------------------------------------------------------------------------------------------------------------------

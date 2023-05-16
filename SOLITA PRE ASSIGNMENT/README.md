@@ -26,6 +26,11 @@ npm i --save csvtojson
 
 Bash command: curl -X POST -H "Content-Type: application/json" -d '{"path": "path/to/your/csv/file.csv"}' http://localhost:3000/import-csv
 
+npx create-react-app citybike-app
+
+npm install react react-dom leaflet
+
+npm install react-leaflet
 
 ---------------------------------------------------------------------------------------------------------------------------------------------------------------------
 

@@ -24,6 +24,8 @@ npm install mongodb
 
 npm i --save csvtojson
 
+npm install --save path
+
 Bash command: curl -X POST -H "Content-Type: application/json" -d '{"path": "path/to/your/csv/file.csv"}' http://localhost:3000/import-csv
 
 npx create-react-app citybike-app

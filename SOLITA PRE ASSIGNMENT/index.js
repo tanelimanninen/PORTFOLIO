@@ -7,6 +7,7 @@ const mongoose = require('mongoose')
 const http = require('http')
 const csv = require('csvtojson');
 const { MongoClient } = require('mongodb')
+const path = require('path');
 
 // create an HTTP server
 const server = http.createServer(app)
@@ -29,13 +30,29 @@ mongoose.connect(MONGODB_URI)
     console.log('Error connection to MongoDB:', error.message)
   })
 
-// Mongoose Scheema and Model here...
+// Mongoose Model here...
 
 
-// simple endpoint to test GET
-app.get('/', (request, response) => {
-  response.send('Hello from server side!')
-})
+// Endpoint to GET the stations data
+app.get('/stations', async (request, response) => {
+  try {
+    const client = new MongoClient(MONGODB_URI, { useNewUrlParser: true, useUnifiedTopology: true });
+    await client.connect();
+    console.log('Connected to MongoDB');
+
+    // Use the default database or provide a specific database name
+    const db = client.db(DB_NAME);
+
+    // Fetch the stations collection data
+    const stations = await db.collection('stations').find().toArray();
+
+    response.json(stations);
+  } catch (error) {
+    console.error('Error connecting to MongoDB:', error);
+    response.status(500).json({ error: 'Failed to fetch stations' });
+  }
+});
+
 
 // Endpoint to import CSV file to MongoDB
 app.post('/import-csv', async (req, res) => {
@@ -60,6 +77,8 @@ app.post('/import-csv', async (req, res) => {
     res.status(500).json({ error: 'Failed to import CSV to MongoDB' });
   }
 });
+
+app.use(express.static(path.join(__dirname, './citybike-app/build/')));
 
 // app listen port 3000
 server.listen(config.PORT, () => {

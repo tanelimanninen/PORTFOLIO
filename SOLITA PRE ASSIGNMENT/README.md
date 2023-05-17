@@ -10,7 +10,9 @@ This project is a fullstack application for Solita's Dev Academy pre assignment.
 
 Visual Studio Code
 
-Node.js installation
+Node.js
+
+MongoDB (Atlas of Compass)
 
 JavaScript
 

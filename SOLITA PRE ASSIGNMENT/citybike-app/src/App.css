@@ -3,10 +3,10 @@
 }
 
 .leaflet-container {
-  width: 75%;
-  height: 75vh;
-  margin: 50px auto;
-  border: 5px double black;
+  width: 100%;
+  height: 100vh;
+  /*margin: 50px auto;*/
+  /*border: 5px double black;*/
 }
 
 .App-logo {

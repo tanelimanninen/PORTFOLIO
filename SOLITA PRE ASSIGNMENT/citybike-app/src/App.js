@@ -1,5 +1,5 @@
 import './App.css';
-import { MapContainer, TileLayer, Marker } from 'react-leaflet'
+import { MapContainer, TileLayer, Marker, Popup } from 'react-leaflet'
 import React, { useEffect, useState } from "react";
 
 function App() {
@@ -33,7 +33,13 @@ function App() {
           key={station._id}
           position={[station.y, station.x]}
           title={station.Nimi}
-        />
+        >
+          <Popup>
+            {station.Nimi}/{station.Namn}<br/>
+            {station.Osoite}/{station.Adress}<br/>
+            Capacity: {station.Kapasiteet}
+          </Popup>
+        </Marker>
       ))}
     
   </MapContainer> 

@@ -48,7 +48,7 @@ npm install react react-dom leaflet
 
 npm install react-leaflet
 
-npm run build (This will create a build folder with optimized and minified static files for your React app.)
+npm run build (This will create a build folder with optimized and minified static files for your React app. Run this every time the react application is modified.)
 
 ---------------------------------------------------------------------------------------------------------------------------------------------------------------------
 

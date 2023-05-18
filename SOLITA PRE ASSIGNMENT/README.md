@@ -12,7 +12,7 @@ My final solution for the assignment was to focus on the citybike stations and s
 
 ## Requirements:
 
-Visual Studio Code
+Visual Studio Code 
 
 Node.js
 
@@ -24,9 +24,17 @@ React
 
 Leaflet Maps
 
-### In the root of project folder
+### Installations (root of the project)
 
-npm install express 
+First you have to make and name your project folder.
+
+cd your_project_folder (To go to the root of your project folder.)
+
+npm init (Creates a package.json.)
+
+npm install express (Installs the express server network adds a dependency entry in your package.json file.)
+
+npm install mongodb (This will download the MongoDB driver and add a dependency entry in your package.json file.)
 
 npm install mongoose 
 
@@ -36,7 +44,6 @@ npm install --save-dev nodemon
 
 npm install dotenv --save
 
-npm install mongodb
 
 npm i --save csvtojson
 

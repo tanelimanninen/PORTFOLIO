@@ -44,28 +44,40 @@ npm install --save-dev nodemon (For automatically restarting the node applicatio
 
 npm install dotenv --save (Loads environment variables from a .env file into process.env.)
 
-Make .env file to the root of project and add variables PORT and MONGODB_URI. PORT can be 3000 for example. You'll have to make new cluster and get the connection string from there to the MONGODB_URI. Make also a new database named 'helsinki_espoo_citybikes' and collection named 'stations' inside it.
+
+Make .env file to the root of project and add variables PORT and MONGODB_URI. PORT can be 3000 for example. In MongodDB, you'll have to make new cluster and get the connection string from there to the MONGODB_URI. Make also a new database named 'helsinki_espoo_citybikes' and collection named 'stations' inside it.
 
 
-npm i --save csvtojson
+npm i --save csvtojson (To convert csv to json or column arrays.)
 
-npm install --save path
+npm install --save path 
 
-Bash command: curl -X POST -H "Content-Type: application/json" -d '{"path": "path/to/your/csv/file.csv"}' http://localhost:3000/import-csv (Adds the sations data to the mongodb.)
 
-npx create-react-app citybike-app
+Add the index.js, utils/config.js with my code to the project. Also add the datasets/Helsingin_ja_Espoon_kaupunkipyora_asemat_avoin.csv to the project. 
 
-npm run dev (Starts the server.) -> http://localhost:3000 is the address where the application runs.
+
+In visual studio code, open git bash terminal and write command: curl -X POST -H "Content-Type: application/json" -d '{"path": "path/to/your/csv/file.csv"}' http://localhost:3000/import-csv (Adds the sations data to the mongodb.)
+
+
+npx create-react-app citybike-app (To install a default react app for the user interface)
+
 
 ### In the root of citybike-app folder:
 
-npm install react react-dom leaflet
+npm install react react-dom leaflet (React, React DOM and Leaflet are required peer dependencies.)
 
-npm install react-leaflet
+npm install react-leaflet 
 
-npm run build (This will create a build folder with optimized and minified static files for your React app. Run this every time the react application is modified.)
+npm run build (This will create a build folder with optimized and minified static files for your React app. Run this every time the react application is modified to work with the backend server.)
 
-npm start (Starts the development interface.)
+Again, add the my code to the App.js and App.css files.
+
+
+### To launch the project
+
+npm start (Starts the development interface in the citybike-app folder.)
+
+npm run dev (Starts the server in the root of the project.) -> http://localhost:3000 is the address where the application runs when finished.
 
 ---------------------------------------------------------------------------------------------------------------------------------------------------------------------
 

@@ -2,7 +2,6 @@ const config = require('./utils/config')
 const express = require('express') 
 const cors = require('cors')
 const app = express()
-const fs = require('fs');
 const mongoose = require('mongoose')
 const http = require('http')
 const csv = require('csvtojson');

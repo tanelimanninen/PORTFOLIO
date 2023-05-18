@@ -42,8 +42,8 @@ function App() {
             title={station.Nimi}
           >
             <Popup>
-              {station.Nimi}/{station.Namn}<br/>
-              {station.Osoite}/{station.Adress}<br/>
+              {station.Nimi} / {station.Namn}<br/>
+              {station.Osoite} / {station.Adress}<br/>
               Capacity: {station.Kapasiteet}
             </Popup>
           </Marker>

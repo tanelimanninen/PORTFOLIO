@@ -59,7 +59,7 @@ app.post('/import-csv', async (req, res) => {
   try {
     const client = new MongoClient(MONGODB_URI, { useNewUrlParser: true, useUnifiedTopology: true });
     await client.connect();
-    console.log('Connected to MongoDB');
+    /*console.log('Connected to MongoDB');*/
 
     // Use the default database or provide a specific database name
     const db = client.db(DB_NAME);

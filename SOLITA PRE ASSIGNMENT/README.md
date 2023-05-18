@@ -36,13 +36,15 @@ npm install express (Installs the express server network adds a dependency entry
 
 npm install mongodb (This will download the MongoDB driver and add a dependency entry in your package.json file.)
 
-npm install mongoose 
+npm install mongoose (For MongoDB object modeling tool designed to work in an asynchronous environment.)
 
-npm install cors 
+npm install cors (Allow connection from different domains and ports.)
 
-npm install --save-dev nodemon 
+npm install --save-dev nodemon (For automatically restarting the node application when file changes in the directory are detected.)
 
-npm install dotenv --save
+npm install dotenv --save (Loads environment variables from a .env file into process.env.)
+
+Make .env file to the root of project and add variables PORT and MONGODB_URI. PORT can be 3000 for example. You'll have to make new cluster and get the connection string from there to the MONGODB_URI. Make also a new database named 'helsinki_espoo_citybikes' and collection named 'stations' inside it.
 
 
 npm i --save csvtojson

@@ -8,6 +8,11 @@ This assignment came to my attention when I sent an open application to Solita a
 
 My final solution for the assignment was to focus on the citybike stations and show them on a map. I chose the most familiar technologies to me for the applicaton. I used Visual Studio Code as the editor, Node.js for the JavaScript based runtime environment, Express for the server framework, MongoDB (Atlas) for the database, Leaflet Maps with React for the user interface.
 
+The application is desktop web application. It shows a mapview zoomed on Helsinki/Espoo region and shows all the citybike station as markers on the map. User can move and zoom in and out freely on the map. When clicking a single marker it shows some essential information about the station. The stations data is saved in a mongodb database and is fetched from the database to the server when the app is launched.
+
+![Alt Text](picture/citybike_app.png)
+
+
 ---------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
 ## Requirements:

@@ -4,7 +4,7 @@
 
 This project is a fullstack application for Solita's Dev Academy pre assignment. Purpose is to make a Helsinki citybike app and the deadline is 31th of May in 2023. 
 
-This assignment came to my attention when I sent an open application to Solita and received instructions to apply to their Dev Academy. Even though I only had just a week to do this assignment due to a planned vacation trip starting on the 20th of May, I still wanted to try my best. That information in mind, my application isn't the most extensive but works just fine and has the functions of a fullstack application.
+This assignment came to my attention when I sent an open application to Solita and received instructions to apply to their Dev Academy. Even though I only had just a week to do this assignment due to a planned vacation trip starting on the 20th of May, I still wanted to try my best, challenge myself and see how much I could get done in a week's time on my own. That information in mind, my application isn't the most extensive but works just fine and has the functions of a fullstack application.
 
 My final solution for the assignment was to focus on the citybike stations and show them on a map. I chose the most familiar technologies to me for the applicaton. I used Visual Studio Code as the editor, Node.js for the JavaScript based runtime environment, Express for the server framework, MongoDB (Atlas) for the database, Leaflet Maps with React for the user interface.
 

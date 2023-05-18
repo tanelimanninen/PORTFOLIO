@@ -42,6 +42,8 @@ Bash command: curl -X POST -H "Content-Type: application/json" -d '{"path": "pat
 
 npx create-react-app citybike-app
 
+npm run dev (Starts the server.) -> http://localhost:3000 is the address where the application runs.
+
 ### In the root of citybike-app folder:
 
 npm install react react-dom leaflet
@@ -49,6 +51,8 @@ npm install react react-dom leaflet
 npm install react-leaflet
 
 npm run build (This will create a build folder with optimized and minified static files for your React app. Run this every time the react application is modified.)
+
+npm start (Starts the development interface.)
 
 ---------------------------------------------------------------------------------------------------------------------------------------------------------------------
 

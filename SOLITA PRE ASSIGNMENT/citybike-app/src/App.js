@@ -23,26 +23,34 @@ function App() {
   const zoom = 14
 
   return (
-    <MapContainer center={position} zoom={zoom} scrollWheelZoom={false} className="App">
-      <TileLayer
-        attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
-        url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
-      />
-      {stations.map((station) => (
-        <Marker
-          key={station._id}
-          position={[station.y, station.x]}
-          title={station.Nimi}
-        >
-          <Popup>
-            {station.Nimi}/{station.Namn}<br/>
-            {station.Osoite}/{station.Adress}<br/>
-            Capacity: {station.Kapasiteet}
-          </Popup>
-        </Marker>
-      ))}
-    
-  </MapContainer> 
+    <div className='App'>
+      <div className='MapOverlay'>
+        <h2>City Bike App</h2>
+        <p>This application shows <br/> the locations of the public <br/> citybike stations in the <br/> Helsinki / Espoo area.</p>
+        <p>Made by: Taneli Manninen</p>
+      </div>
+
+      <MapContainer center={position} zoom={zoom} scrollWheelZoom={false} className="MapContainer">
+        <TileLayer
+          attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+          url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
+        />
+        {stations.map((station) => (
+          <Marker
+            key={station._id}
+            position={[station.y, station.x]}
+            title={station.Nimi}
+          >
+            <Popup>
+              {station.Nimi}/{station.Namn}<br/>
+              {station.Osoite}/{station.Adress}<br/>
+              Capacity: {station.Kapasiteet}
+            </Popup>
+          </Marker>
+        ))}
+      
+    </MapContainer> 
+  </div>
   );
 }
 

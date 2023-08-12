@@ -1,9 +1,5 @@
 import { useState } from 'react'
 
-const sum = (p1, p2, p3) => {
-  return p1 + p2 + p3
-}
-
 const App = () => {
   // tallenna napit omaan tilaansa
   const [good, setGood] = useState(0)
@@ -13,6 +9,8 @@ const App = () => {
   const addGood = () => setGood(good + 1)
   const addNeutral = () => setNeutral(neutral +1)
   const addBad = () => setBad(bad + 1)
+  
+
 
   return (
     <div>
@@ -21,15 +19,11 @@ const App = () => {
       <Button handleClick={addNeutral} text='Neutral' />
       <Button handleClick={addGood} text='Good' />
       <Header2 />
-      <GoodTotal good={good}/>
-      <NeutralTotal neutral={neutral} />
-      <BadTotal bad={bad} />
-      <TotalAll good={good} neutral={neutral} bad={bad} />
-      <Avarage good={good} neutral={neutral} bad={bad}/>
-      <Positives good={good} neutral={neutral} bad={bad}/>
+      <Statistics good={good} neutral={neutral} bad={bad} />
     </div>
   )
 }
+
 
 //HEADER COMPONENTS X2
 const Header1 = () => <h1>Give Feedback</h1>
@@ -45,47 +39,55 @@ const Button = (props) => {
   )
 }
 
-//STATS COMPONENTS
-const GoodTotal = (props) => <div>Good: {props.good}</div>
+//COMPONENT TO UNITE ALL STATISTICS
+const Statistics = (props) => {
+  const totalFeedback = props.good + props.neutral + props.bad
 
-const NeutralTotal = (props) => <div>Neutral: {props.neutral}</div>
-
-const BadTotal = (props) => <div>Bad: {props.bad}</div>
-
-const TotalAll = (props) => {
-  const result = sum(props.good, props.neutral, props.bad)
-  //console.log(result)
+  if (totalFeedback === 0) {
+    return <p>No feedback data yet.</p>
+  }
 
   return (
-    <div>All: {result}</div>
+    <div>
+      <StatisticLine text="Good" value={props.good} />
+      <StatisticLine text="Neutral" value={props.neutral} />
+      <StatisticLine text="Bad" value={props.bad} />
+      <StatisticLine type="TotalAll" text="Total" value={totalFeedback} good={props.good} neutral={props.neutral} bad={props.bad} />
+      <StatisticLine type="Average" text="Average" good={props.good} neutral={props.neutral} bad={props.bad} />
+      <StatisticLine type="Positives" text="Positives" good={props.good} neutral={props.neutral} bad={props.bad} />
+    </div>
   )
 }
 
-//CALCULATOR COMPONENTS
-const Avarage = (props) => {
-  const avarage = (p1, p2, p3) => {
-    return p3 === 0 ? 0 : (p1 - p2) / p3
+//SINGLE STAT COMPONENT LINE
+const StatisticLine = (props) => {
+  // CALCULATE SUM OF FEEDBACK
+  const totalFeedback = props.good + props.neutral + props.bad
+
+  // CALCULATE AVERAGE OF FEEDBACK
+  const calculateAverage = () => {
+    return totalFeedback === 0 ? 0 : (props.good - props.bad) / totalFeedback
+  };
+
+  // CALCULATE POSITIVE PROCENTAGE OF FEEDBACK
+  const calculatePositives = () => {
+    return totalFeedback === 0 ? 0 : (props.good / totalFeedback) 
+  };
+
+  let value = props.value;
+
+  if (props.type === 'TotalAll') {
+    value = totalFeedback
+  } else if (props.type === 'Average') {
+    value = calculateAverage()
+  } else if (props.type === 'Positives') {
+    value = calculatePositives()
   }
 
-  const summ = sum(props.good, props.neutral, props.bad)
-
-  const result2 = avarage(props.good, props.bad, summ)
-
   return (
-    <div>Avarage: {result2}</div>
-  )
-}
-
-const Positives = (props) => {
-  const procent = (p1, p2,) => {
-    return p2 === 0 ? 0 : p1 / p2
-  }
-
-  const summ = sum(props.good, props.neutral, props.bad)
-  const result3 = procent(props.good, summ)
-
-  return (
-    <div>Positive: {result3}</div>
+    <div>
+      {props.text}: {value}
+    </div>
   )
 }
 

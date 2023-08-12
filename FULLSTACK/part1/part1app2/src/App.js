@@ -9,8 +9,6 @@ const App = () => {
   const addGood = () => setGood(good + 1)
   const addNeutral = () => setNeutral(neutral +1)
   const addBad = () => setBad(bad + 1)
-  
-
 
   return (
     <div>

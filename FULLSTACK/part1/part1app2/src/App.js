@@ -46,14 +46,34 @@ const Statistics = (props) => {
   }
 
   return (
-    <div>
-      <StatisticLine text="Good" value={props.good} />
-      <StatisticLine text="Neutral" value={props.neutral} />
-      <StatisticLine text="Bad" value={props.bad} />
-      <StatisticLine type="TotalAll" text="Total" value={totalFeedback} good={props.good} neutral={props.neutral} bad={props.bad} />
-      <StatisticLine type="Average" text="Average" good={props.good} neutral={props.neutral} bad={props.bad} />
-      <StatisticLine type="Positives" text="Positives" good={props.good} neutral={props.neutral} bad={props.bad} />
-    </div>
+    <table>
+      <tbody>
+        <tr>
+          <td>Good</td>
+          <td><StatisticLine value={props.good} /></td>
+        </tr>
+        <tr>
+          <td>Neutral</td>
+          <td><StatisticLine value={props.neutral} /></td>
+        </tr>
+        <tr>
+          <td>Bad</td>
+          <td><StatisticLine value={props.bad} /></td>
+        </tr>
+        <tr>
+          <td>Total</td>
+          <td><StatisticLine type="TotalAll" value={totalFeedback} good={props.good} neutral={props.neutral} bad={props.bad} /></td>
+        </tr>
+        <tr>
+          <td>Average</td>
+          <td><StatisticLine type="Average" value={totalFeedback} good={props.good} neutral={props.neutral} bad={props.bad} /></td>
+        </tr>
+        <tr>
+          <td>Positives</td>
+          <td><StatisticLine type="Positives" value={totalFeedback} good={props.good} neutral={props.neutral} bad={props.bad} /></td>
+        </tr>
+      </tbody>
+    </table>
   )
 }
 
@@ -84,7 +104,7 @@ const StatisticLine = (props) => {
 
   return (
     <div>
-      {props.text}: {value}
+      {props.text} {value}
     </div>
   )
 }

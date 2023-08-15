@@ -12,21 +12,19 @@ const App = () => {
 
   return (
     <div>
-      <Header1 />
+      <Header text='Give Feedback' />
       <Button handleClick={addBad} text='Bad' />
       <Button handleClick={addNeutral} text='Neutral' />
       <Button handleClick={addGood} text='Good' />
-      <Header2 />
+      <Header text='Statistics' />
       <Statistics good={good} neutral={neutral} bad={bad} />
     </div>
   )
 }
 
 
-//HEADER COMPONENTS X2
-const Header1 = () => <h1>Give Feedback</h1>
-
-const Header2 = () => <h1>Statistics</h1>
+//HEADER COMPONENT
+const Header = (props) => <h1>{props.text}</h1>
 
 //BUTTON COMPONENT
 const Button = (props) => {

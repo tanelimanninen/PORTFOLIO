@@ -4,14 +4,30 @@ import { useState } from 'react'
 
 function App() {
   const [persons, setPersons] = useState([{ name: 'Arto Hellas' }])
-  //const [newName, setNewName] = useState('')
+  const [newName, setNewName] = useState('')
+
+  const addPerson = (event) => {
+    event.preventDefault()
+    console.log(event.target)
+    
+    const personObject = {
+      name: newName
+    }
+
+    setPersons(persons.concat(personObject))
+  }
+
+  const handleInputChange = (event) => {
+    console.log(event.target.value)
+    setNewName(event.target.value)
+  }
 
   return (
     <div>
       <h2>Phonebook</h2>
-      <form>
+      <form onSubmit={addPerson}>
         <div>
-          Name: <input />
+          Name: <input value={newName} onChange={handleInputChange} />
         </div>
         <div>
           <button type="submit">Add</button>

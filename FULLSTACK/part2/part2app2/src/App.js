@@ -12,10 +12,10 @@ function App() {
 
   //GET THE JSON-DATA FROM SERVER
   useEffect(() => {
-    console.log('effect')
+    //console.log('effect')
     axios
       .get('http://localhost:3001/persons').then(response => {
-        console.log('promise fulfilled')
+        //console.log('promise fulfilled')
         setPersons(response.data)
       })
   })
@@ -39,7 +39,15 @@ function App() {
     } else if (persons.some(person => person.number === newNumber)) {
       window.alert(`Can't add ${newNumber}, because the number is already in the phonebook.`)
     } else {
-      setPersons(persons.concat(personObject))
+      
+      axios
+      .post('http://localhost:3001/persons', personObject)
+      .then(response => {
+        console.log(response)
+        setPersons(persons.concat(response.data))
+        setNewName('')
+        setNewNumber('')
+      })
     }
   }
 

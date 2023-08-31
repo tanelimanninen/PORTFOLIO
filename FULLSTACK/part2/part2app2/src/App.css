@@ -5,3 +5,11 @@
 ul {
   list-style-type: none;
 }
+
+.button1 {
+  background-color: cornflowerblue;
+}
+
+.button2 {
+  background-color: crimson;
+}

@@ -21,9 +21,14 @@
       "id": 4
     },
     {
-      "name": "Erkki Junkkarinen",
-      "number": "000",
-      "id": 5
+      "name": "Postimies Pate",
+      "number": "345734736573",
+      "id": 7
+    },
+    {
+      "name": "Esa Tikkanen",
+      "number": "+999 9999 9999",
+      "id": 8
     }
   ]
 }

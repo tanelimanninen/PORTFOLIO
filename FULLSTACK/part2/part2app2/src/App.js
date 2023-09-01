@@ -37,15 +37,42 @@ function App() {
       number: newNumber
     }
 
-    if (persons.some(person => person.name === newName)) {
-      window.alert(`Can't add ${newName}, because the name is already in the phonebook.`)
-    } else if (persons.some(person => person.number === newNumber)) {
-        window.alert(`Can't add ${newNumber}, because the number is already in the phonebook.`)
-    } else if (newName === '') {
+    //FIND IF PERSON NAME ALREADY EXISTS
+    const existingPerson = persons.find(person => person.name === newName)
+    //FIND IF PERSON NUMBER ALREADY EXISTS
+    const existingNumber = persons.find(person => person.number === newNumber)
+
+    //CONDITION 1 = IF NAME & NUMBER ARE BOTH ALREADY IN PHONEBOOK
+    if (existingPerson && existingNumber) {
+      window.alert(`Can't add ${newName}, because the name and number is already in the phonebook.`)
+    } 
+    //CONDITION 2 = IF NAME IS ALREADY IN THE PHONEBOOK BUT NUMBER ISN'T
+    else if (existingPerson) {
+      const confirmUpdate = window.confirm(`${newName} is already in the phonebook. Do you want to update the number?`)
+      
+      if (confirmUpdate) {
+        const updatedPerson = { ...existingPerson, number: newNumber}
+        
+        //PUT METHOD
+        personService
+          .update(existingPerson.id, updatedPerson)
+          .then(returnedPerson => {
+            setPersons(persons.map(person => (person.id === returnedPerson.id ? returnedPerson : person)))
+            setNewName('')
+            setNewNumber('')
+          })
+          .catch(error => {
+            console.error('Error updating person:', error);
+            // Handle errors, such as showing an error message to the user
+          })
+      }
+    }
+    //CONDITION 3 = IF NAME OR NUMBER VALUE IS EMPTY
+    else if (newName === '' || newNumber === '') {
         window.alert(`Can't add empty values!`)
-    } else if (newNumber === '') {
-      window.alert(`Can't add empty values!`)
-    } else {
+    } 
+    //CONDITION 4 = IF NAME AND NUMBER DOESN'T EXIST YET
+    else {
         //POST METHOD
         personService
           .create(personObject)
@@ -56,6 +83,10 @@ function App() {
             console.log(returnedPerson)
             setNewName('')
             setNewNumber('')
+          })
+          .catch(error => {
+            console.error('Error creating person:', error);
+            // Handle errors, such as showing an error message to the user
           })
     }
   }

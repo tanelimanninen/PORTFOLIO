@@ -2,6 +2,7 @@ import Search from './components/Search';
 import Form from './components/Form';
 import List from './components/List';
 import personService from './services/persons'
+import Notification from './components/Notification';
 import { useState, useEffect } from 'react'
 import './App.css';
 
@@ -10,6 +11,7 @@ function App() {
   const [search, setSearch] = useState('')
   const [newName, setNewName] = useState('')
   const [newNumber, setNewNumber] = useState('')
+  const [confirmationMessage, setConfirmationMessage] = useState(null)
 
   //GET THE JSON-DATA FROM SERVER
   useEffect(() => {
@@ -60,6 +62,11 @@ function App() {
             setPersons(persons.map(person => (person.id === returnedPerson.id ? returnedPerson : person)))
             setNewName('')
             setNewNumber('')
+            //CONFIRM THE USER THAT UPDATE IS SUCCESFUL
+            setConfirmationMessage(`'${newNumber}' updated to ${newName}`)
+            setTimeout(() => {
+              setConfirmationMessage(null)
+            }, 4000)
           })
           .catch(error => {
             console.error('Error updating person:', error);
@@ -83,6 +90,11 @@ function App() {
             console.log(returnedPerson)
             setNewName('')
             setNewNumber('')
+            //CONFIRM THE USER THAT UPDATE IS SUCCESFUL
+            setConfirmationMessage(`Added ${newName} to the phonebook`)
+            setTimeout(() => {
+              setConfirmationMessage(null)
+            }, 4000)
           })
           .catch(error => {
             console.error('Error creating person:', error);
@@ -103,8 +115,13 @@ function App() {
         .deleteSelected(id)
         .then(() => {
           setPersons(persons.filter(person => person.id !== id))
+          //CONFIRM THE USER THAT UPDATE IS SUCCESFUL
+          setConfirmationMessage(`Deleted ${personToDelete.name} from the phonebook`)
+          setTimeout(() => {
+            setConfirmationMessage(null)
+          }, 4000)
         })
-      console.log(`Contact ${personToDelete.name} deleted`)
+      //console.log(`Contact ${personToDelete.name} deleted`)
     }
   }
 
@@ -127,6 +144,7 @@ function App() {
   return (
     <div>
       <h2>Phonebook</h2>
+      <Notification message={confirmationMessage} />
       <Search handleSearchChange={handleSearchChange}/>
       <h3>Add a new contact</h3>
       <Form 

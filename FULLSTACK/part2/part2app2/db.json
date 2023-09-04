@@ -1,11 +1,6 @@
 {
   "persons": [
     {
-      "name": "Arto Hellas",
-      "number": "040-123456",
-      "id": 1
-    },
-    {
       "name": "Dan Abramov",
       "number": "12-43-234345",
       "id": 3
@@ -17,13 +12,18 @@
     },
     {
       "name": "Postimies Pate",
-      "number": "99887766",
+      "number": "+358 123 5678",
       "id": 7
     },
     {
       "name": "Masa Mainio",
-      "number": "+3939393939",
+      "number": "+359 876 54321",
       "id": 9
+    },
+    {
+      "name": "Pekka Haavisto",
+      "number": "+888 8888 8888",
+      "id": 10
     }
   ]
 }

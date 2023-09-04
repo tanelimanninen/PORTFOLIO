@@ -13,3 +13,13 @@ ul {
 .button2 {
   background-color: crimson;
 }
+
+.error {
+  color: green;
+  background: rgb(212, 212, 212);
+  font-size: 20px;
+  border-style: solid;
+  border-radius: 5px;
+  padding: 10px;
+  margin-bottom: 10px;
+}

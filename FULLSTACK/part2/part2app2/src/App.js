@@ -12,6 +12,7 @@ function App() {
   const [newName, setNewName] = useState('')
   const [newNumber, setNewNumber] = useState('')
   const [confirmationMessage, setConfirmationMessage] = useState(null)
+  const [errorMessage, setErrorMessage] = useState(null)
 
   //GET THE JSON-DATA FROM SERVER
   useEffect(() => {
@@ -62,15 +63,18 @@ function App() {
             setPersons(persons.map(person => (person.id === returnedPerson.id ? returnedPerson : person)))
             setNewName('')
             setNewNumber('')
-            //CONFIRM THE USER THAT UPDATE IS SUCCESFUL
+            //CONFIRM THE USER THAT UPDATE IS SUCCESSFUL
             setConfirmationMessage(`'${newNumber}' updated to ${newName}`)
             setTimeout(() => {
               setConfirmationMessage(null)
             }, 4000)
           })
+          //SHOW ERROR MESSAGE WHEN UPDATE IS UNSUCCESSFUL
           .catch(error => {
-            console.error('Error updating person:', error);
-            // Handle errors, such as showing an error message to the user
+            setErrorMessage(`Oops! ${newName} has already been removed from the server`)
+            setTimeout(() => {
+              setErrorMessage(null)
+            }, 4000)
           })
       }
     }
@@ -115,13 +119,19 @@ function App() {
         .deleteSelected(id)
         .then(() => {
           setPersons(persons.filter(person => person.id !== id))
-          //CONFIRM THE USER THAT UPDATE IS SUCCESFUL
+          //CONFIRM THE USER THAT DELETION IS SUCCESFUL
           setConfirmationMessage(`Deleted ${personToDelete.name} from the phonebook`)
           setTimeout(() => {
             setConfirmationMessage(null)
           }, 4000)
         })
-      //console.log(`Contact ${personToDelete.name} deleted`)
+        //SHOW ERROR MESSAGE IF DELETION IS UNSUCCESSFUL
+        .catch(error => {
+          setErrorMessage(`Oops! ${personToDelete.name} has already been removed from the server`)
+          setTimeout(() => {
+            setErrorMessage(null)
+          }, 4000)
+        })
     }
   }
 
@@ -144,7 +154,8 @@ function App() {
   return (
     <div>
       <h2>Phonebook</h2>
-      <Notification message={confirmationMessage} />
+      <Notification message={confirmationMessage} isSuccess={true} />
+      <Notification message={errorMessage} isSuccess={false} />
       <Search handleSearchChange={handleSearchChange}/>
       <h3>Add a new contact</h3>
       <Form 

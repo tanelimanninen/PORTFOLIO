@@ -1,29 +1,39 @@
 {
   "persons": [
     {
-      "name": "Dan Abramov",
-      "number": "12-43-234345",
+      "name": "äijä 1",
+      "number": "+111 1111 11111",
+      "id": 1
+    },
+    {
+      "name": "äijä 2",
+      "number": "+222 2222 22222",
+      "id": 2
+    },
+    {
+      "name": "äijä 3",
+      "number": "+333 3333 33333",
       "id": 3
     },
     {
-      "name": "Mary Poppendieck",
-      "number": "39-23-6423122",
+      "name": "äijä 4",
+      "number": "+444 4444 44444",
       "id": 4
     },
     {
-      "name": "Postimies Pate",
-      "number": "+358 123 5678",
+      "name": "äijä 5",
+      "number": "+555 5555 55555",
+      "id": 5
+    },
+    {
+      "name": "äijä 6",
+      "number": "+666 6666 66666",
+      "id": 6
+    },
+    {
+      "name": "äijä 7",
+      "number": "+777 7777 77777",
       "id": 7
-    },
-    {
-      "name": "Masa Mainio",
-      "number": "+359 876 54321",
-      "id": 9
-    },
-    {
-      "name": "Pekka Haavisto",
-      "number": "+888 8888 8888",
-      "id": 10
     }
   ]
 }

@@ -2,6 +2,18 @@
   text-align: center;
 }
 
-ul {
+.dotless {
   list-style-type: none;
+}
+
+.dots {
+  list-style-type: circle;
+}
+
+.flag {
+  display: flex;
+  margin: auto;
+  width: 25%;
+  border: 0.75px solid rgb(187, 187, 187);
+  box-shadow: 0.25px 0.25px rgb(125, 125, 125);
 }

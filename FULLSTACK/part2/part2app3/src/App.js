@@ -1,6 +1,8 @@
-import './App.css';
+import './App.css'
 import { useState, useEffect } from 'react'
 import axios from 'axios'
+import Input from './components/Input'
+import Information from './components/Information'
 
 const App = () => {
   const [value, setValue] = useState('')
@@ -15,9 +17,10 @@ const App = () => {
       axios
         .get(`https://restcountries.com/v3.1/name/${value}`)
         .then(response => {
-          // LIMIT RESULTS TO FIRST 10 MATCHES
+          //LIMIT RESULTS TO FIRST 10 MATCHES
+          console.log(response.data.length)
           const first10Countries = response.data.slice(0, 10)
-          setCountries(first10Countries)
+          setCountries(first10Countries) 
         })
         .catch(error => {
           console.error('Error fetching country data:', error);
@@ -40,19 +43,9 @@ const App = () => {
   return (
     <div className="App">
       <h1>Countries App</h1>
-      Countries: <input value={value} onChange={handleChange} />
+      <Input value={value} handleChange={handleChange} />
       <br/>
-      {countries.length > 0 ? (
-        <div>
-          <ul>
-            {countries.map((country, index) => (
-              <li key={index}>{country.name.common}</li>
-            ))}
-          </ul>
-        </div>
-      ) : (
-        <p>No matching countries found.</p>
-      )}
+      <Information countries={countries} />
     </div>
   );
 }

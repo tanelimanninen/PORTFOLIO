@@ -1,5 +1,11 @@
-import React, { useEffect, useState } from 'react';
-import axios from 'axios';
+import React, { useEffect, useState } from 'react'
+//import dotenv from 'dotenv'
+import axios from 'axios'
+
+// Load environment variables from .env file
+//dotenv.config();
+
+const weatherApiKey = 'a9ad552ae8927528f493caaecce95c16'
 
 const Information = ({ countries }) => {
     const [weather, setWeather] = useState(null)
@@ -8,9 +14,8 @@ const Information = ({ countries }) => {
         // FUNCTION TO FETCH WEATHER DATA
         const fetchWeatherData = async (capital) => {
         try {
-          const apiKey = 'a9ad552ae8927528f493caaecce95c16'
           const response = await axios.get(
-            `https://api.openweathermap.org/data/2.5/weather?q=${capital}&units=metric&appid=${apiKey}`
+            `https://api.openweathermap.org/data/2.5/weather?q=${capital}&units=metric&appid=${weatherApiKey}`
           )
           setWeather(response.data)
           console.log(response.data)

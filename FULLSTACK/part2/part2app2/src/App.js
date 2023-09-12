@@ -23,7 +23,7 @@ function App() {
       .then(intialPersons => {
         setPersons(intialPersons)
       })
-  })
+  }, [])
 
   const filteredPersons = persons.filter(person => 
       person.name.toLowerCase().includes(search.toLowerCase()) ||

@@ -101,8 +101,13 @@ function App() {
             }, 4000)
           })
           .catch(error => {
-            console.error('Error creating person:', error);
-            // Handle errors, such as showing an error message to the user
+            //CONSOLE MESSAGE
+            console.error('Error creating person:', error)
+            //UI MESSAGE WITH TIMEOUT
+            setErrorMessage('Contact validation failed: ' + error.response.data.error)
+            setTimeout(() => {
+              setErrorMessage(null)
+            }, 4000)
           })
     }
   }

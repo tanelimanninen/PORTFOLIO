@@ -28,9 +28,30 @@ const favouriteBLog = (blogs) => {
   return filteredMostLikedBlog
 }
 
+//FIND THE AUTHOR WITH MOST BLOGS WRITTEN
+const mostBlogs = (blogs) => {
+  const blogCounts = blogs.reduce((counts, blog) => {
+    const author = blog.author
+    //GET COUNT OF SPECIFIC AUTHOR (IF AUTHOR IS NEW TO COUNTS-OBJECT, SET IT TO 0)
+    counts[author] = (counts[author] || 0) + 1
+
+    if (counts[author] > counts.maxBlogs) {
+      counts.maxBlogs = counts[author]
+      counts.mostBlogsAuthor = author
+    }
+    return counts
+  }, { maxBlogs: -1 })
+
+  return {
+    author: blogCounts.mostBlogsAuthor,
+    blogs: blogCounts.maxBlogs
+  }
+}
+
 
 module.exports = {
   dummy,
   totalLikes,
-  favouriteBLog
+  favouriteBLog,
+  mostBlogs
 }

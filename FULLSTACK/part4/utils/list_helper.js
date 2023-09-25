@@ -32,9 +32,11 @@ const favouriteBLog = (blogs) => {
 const mostBlogs = (blogs) => {
   const blogCounts = blogs.reduce((counts, blog) => {
     const author = blog.author
+
     //GET COUNT OF SPECIFIC AUTHOR (IF AUTHOR IS NEW TO COUNTS-OBJECT, SET IT TO 0)
     counts[author] = (counts[author] || 0) + 1
 
+    //CHECK IF CURRENT AUTHOR HAS MORE THAN PREVIOUS MAXIMUM
     if (counts[author] > counts.maxBlogs) {
       counts.maxBlogs = counts[author]
       counts.mostBlogsAuthor = author
@@ -48,10 +50,39 @@ const mostBlogs = (blogs) => {
   }
 }
 
+//FIND AUTHOR WITH MOST LIKES
+const mostLikes = (blogs) => {
+  const authorLikes = blogs.reduce((result, blog) => {
+    const { author, likes } = blog
+
+    //GET LIKES OF SPECIFIC AUTHOR
+    result[author] = (result[author] || 0) + likes
+    return result
+  }, {})
+
+  console.log('authorLikes:', authorLikes)
+
+  let maxLikes = -1
+  let mostLikesAuthor = null
+
+  for (const author in authorLikes) {
+    //CHECK IF CURRENT AUTHOR HAS MORE LIKES THAN PREVIOUS MAX
+    if (authorLikes[author] > maxLikes) {
+      maxLikes = authorLikes[author]
+      mostLikesAuthor = author
+    }
+  }
+
+  return {
+    author: mostLikesAuthor,
+    likes: maxLikes
+  }
+}
 
 module.exports = {
   dummy,
   totalLikes,
   favouriteBLog,
-  mostBlogs
+  mostBlogs,
+  mostLikes
 }

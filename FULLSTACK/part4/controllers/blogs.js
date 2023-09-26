@@ -7,14 +7,24 @@ blogssRouter.get('/', async (request, response) => {
   response.json(blogs)
 })
 
-blogssRouter.post('/', (request, response) => {
-  const blog = new Blog(request.body)
+blogssRouter.post('/', async (request, response, next) => {
+  const body = request.body
 
-  blog
-    .save()
-    .then(result => {
-      response.status(201).json(result)
-    })
+  //MODEL OF NEW OBJECT WITH ADDITION, IF LIKES ARE NOT DEFINED IT GETS VALUE OF 0
+  const blog = new Blog({
+    title: body.title,
+    author: body.author,
+    url: body.url,
+    likes: body.likes || 0
+  })
+
+  const savedBlog = await blog.save()
+  try {
+    response.status(201).json(savedBlog)
+  } catch(exception) {
+    next(exception)
+  }
+  //response.json(savedBlog)
 })
 
 module.exports = blogssRouter

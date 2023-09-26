@@ -9,7 +9,19 @@ const requestLogger = (request, response, next) => {
   next()
 }
 
+const errorHandler = (error, request, response, next) => {
+  logger.error(error.message)
+  logger.error(error.name)
+
+  //CONDITION 1: IF NEW BLOG VALIDATION HAS ERRORS
+  if (error.name === 'ValidationError') {
+    return response.status(400).json({ error: error.message })
+  }
+
+  next(error)
+}
+
 module.exports = {
   requestLogger,
-
+  errorHandler
 }

@@ -17,6 +17,10 @@ const errorHandler = (error, request, response, next) => {
   if (error.name === 'ValidationError') {
     return response.status(400).json({ error: error.message })
   }
+  //CONDITION 2: IF USER TOKEN HAS ERRORS
+  else if (error.name ===  'JsonWebTokenError') {
+    return response.status(400).json({ error: 'token missing or invalid' })
+  }
 
   next(error)
 }

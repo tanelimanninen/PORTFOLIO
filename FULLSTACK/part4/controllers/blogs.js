@@ -1,7 +1,7 @@
 const blogsRouter = require('express').Router()
 const jwt = require('jsonwebtoken')
 const Blog = require('../models/blog')
-const User = require('../models/user')
+//const User = require('../models/user')
 
 //ROUTE 1: GET ALL DATA
 blogsRouter.get('/', async (request, response) => {
@@ -11,26 +11,18 @@ blogsRouter.get('/', async (request, response) => {
   response.json(blogs)
 })
 
-const getTokenFrom = request => {
-  const authorization = request.get('authorization')
-  if (authorization && authorization.startsWith('bearer ')) {
-    return authorization.replace('bearer ', '')
-  }
-  return null
-}
-
 //ROUTE 2: MAKE NEW BLOG OBJECT
 blogsRouter.post('/', async (request, response, next) => {
   const body = request.body
 
-  const decodedToken = jwt.verify(getTokenFrom(request), process.env.SECRET)
+  const decodedToken = jwt.verify(request.token, process.env.SECRET)
 
-  if (!decodedToken.id) {
+  if (!decodedToken || !decodedToken.id) {
     return response.status(401).json({ error: 'token invalid' })
   }
 
-  //GET THE FIRST USER FROM DATA
-  const user = await User.findById(decodedToken.id)
+  //GET THE USER WITH TOKEN
+  const user = request.user
 
   //MODEL OF NEW OBJECT, IF LIKES ARE NOT DEFINED IT GETS VALUE OF 0
   const blog = new Blog({
@@ -41,7 +33,6 @@ blogsRouter.post('/', async (request, response, next) => {
     likes: body.likes || 0
   })
 
-  //THIS WORKS WITH CONCAT
   try {
     const savedBlog = await blog.save()
     user.blogs = user.blogs.concat(savedBlog._id)
@@ -55,6 +46,20 @@ blogsRouter.post('/', async (request, response, next) => {
 
 //ROUTE 3: DELETE ONE BLOG OBJECT
 blogsRouter.delete('/:id', async (request, response) => {
+  const decodedToken = request.user
+
+  if (!decodedToken || !decodedToken.id) {
+    return response.status(401).json({ error: 'token invalid' })
+  }
+
+  //GET THE BLOG TO DELETE
+  const blog = await Blog.findById(request.params.id)
+
+  //CHECK IF USER IS AUTHORIZED
+  if (blog.user.toString() !== decodedToken.id) {
+    return response.status(403).json({ error: 'Not authorized to delete this blog' })
+  }
+
   await Blog.findByIdAndRemove(request.params.id)
   response.status(204).end()
 })

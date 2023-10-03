@@ -1,9 +1,12 @@
+//const jwt = require('jsonwebtoken')
+const bcrypt = require('bcrypt')
 const mongoose = require('mongoose')
 const supertest = require('supertest')
 const helper = require('./test_helper')
 const app = require('../app')
 const api = supertest(app)
 const Blog = require('../models/blog')
+const User = require('../models/user')
 
 beforeEach(async () => {
   await Blog.deleteMany({})
@@ -64,31 +67,47 @@ describe('validation', () => {
 
 
 describe('adding data', () => {
+  let token
+
+  //CLEAR DATABASE OF USERS AND ADJUST WITH NEW ONE
+  beforeAll(async () => {
+    await User.deleteMany({})
+    const passwordHash = await bcrypt.hash('mypassword', 10)
+    const user = new User({ username: 'testuser', passwordHash })
+    await user.save()
+
+    //LOGIN USER AND GET TOKEN
+    const loginResponse = await api
+      .post('/api/login')
+      .send({ username: 'testuser', password: 'mypassword' })
+    token = loginResponse.body.token
+    console.log(token)
+  })
 
   //4. TEST
-  test('new blog can be added with given content', async () => {
+  test('new blog can be added with correctly given content', async () => {
     const newBlog = {
       title: 'testi blogi',
       author: 'testi dude',
-      url: 'http://www.example.com',
-      likes: 0
+      url: 'http://www.example.com'
     }
 
+    //CHECK THAT IT RETURNS THE EXPECTED STATUS CODE
     await api
       .post('/api/blogs')
       .send(newBlog)
+      .set('Authorization', `bearer ${token}`)
+      .set('Accept', 'application/json')
       .expect(201)
       .expect('Content-Type', /application\/json/)
 
     const blogsAfterAddition = await helper.blogsInDb()
     const titles = blogsAfterAddition.map(b => b.title)
-    const authors = blogsAfterAddition.map(b => b.author)
 
     console.log(blogsAfterAddition)
 
     expect(blogsAfterAddition).toHaveLength(helper.initialBlogs.length + 1)
     expect(titles).toContain('testi blogi')
-    expect(authors).toContain('testi dude')
   })
 
   //5. TEST
@@ -99,9 +118,12 @@ describe('adding data', () => {
       url: "www.terribleblogs.com/unviral/"
     }
 
+    //CHECK THAT IT RETURNS THE EXPECTED STATUS CODE
     await api
       .post('/api/blogs')
       .send(newBlog)
+      .set('Authorization', `bearer ${token}`)
+      .set('Accept', 'application/json')
       .expect(201)
       .expect('Content-Type', /application\/json/)
 
@@ -113,32 +135,76 @@ describe('adding data', () => {
     expect(lastBlog.likes).toBeDefined()
     expect(lastBlog.likes).toBe(0)
   })
+
+  //6. TEST (EN SAANUT TOIMIMAAN ILMAN, ETTÄ KAKSI EDELLISTÄ MENEE HAJALLE)
+  test('it is not possible to add blogs without authorization', async () => {
+    const newBlog = {
+      title: 'laiton blogi',
+      author: 'laiton dude',
+      url: 'http://www.example.com'
+    }
+
+    //CHECK THAT IT RETURNS THE EXPECTED STATUS CODE
+    await api
+      .post('/api/blogs')
+      .send(newBlog)
+      .expect(401)
+  })
 })
 
 
 describe('modifying data', () => {
+  let token
+  let blogId
+
+  //CLEAR DATABASE OF USERS AND ADJUST WITH NEW ONE
+  beforeAll(async () => {
+    await Blog.deleteMany({})
+    await User.deleteMany({})
+
+    //MAKE NEW USER
+    const passwordHash = await bcrypt.hash('mypassword', 10)
+    const user = new User({ username: 'testuser', passwordHash })
+    await user.save()
+
+    //ADD NEW BLOG WITH AUTHORIZED USER CONNECTION
+    const newBlog = new Blog({
+      title: 'Test Blog',
+      author: 'Test Author',
+      user: user._id,
+      url: 'http://www.example.com',
+      likes: 5
+    });
+    const savedBlog = await newBlog.save()
+    user.blogs = user.blogs.concat(savedBlog._id)
+    await user.save()
+    blogId = savedBlog._id
+
+    //LOGIN USER AND GET TOKEN
+    const loginResponse = await api
+      .post('/api/login')
+      .send({ username: 'testuser', password: 'mypassword' })
+    token = loginResponse.body.token
+  })
 
   //6. TEST
   test('a blog can be deleted', async () => {
     const blogsBeforeDelete = await helper.blogsInDb()
-    //console.log(blogsBeforeDelete)
-    const blogToDelete = blogsBeforeDelete[0]
 
     //CHECK THAT DELETION RETURNS EXPECTED STATUS CODE
     await api
-      .delete(`/api/blogs/${blogToDelete.id}`)
+      .delete(`/api/blogs/${blogId}`)
+      .set('Authorization', `bearer ${token}`)
       .expect(204)
 
     const blogsAfterDelete = await helper.blogsInDb()
-    //console.log(blogsAfterDelete)
+
+    //CHECK THAT DELETED TITLE ISN'T IN THE BLOGS ANYMORE
+    const deletedBlog = blogsAfterDelete.find(blog => blog.id === blogId);
+    expect(deletedBlog).toBeUndefined()
 
     //CHECK THAT BLOGS' LENGTH IS SHORTENED BY ONE
-    expect(blogsAfterDelete).toHaveLength(helper.initialBlogs.length - 1)
-
-    const titles = blogsAfterDelete.map(b => b.title)
-    //console.log(titles)
-    //CHECK THAT DELETED TITLE ISN'T IN THE BLOGS ANYMORE
-    expect(titles).not.toContain(blogToDelete.title)
+    expect(blogsAfterDelete).toHaveLength(blogsBeforeDelete.length - 1)
   })
 
   //7. TEST

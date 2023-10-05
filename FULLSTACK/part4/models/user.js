@@ -15,11 +15,7 @@ const userSchema = mongoose.Schema({
     minlength: 3
   },
   name: String,
-  passwordHash: {
-    type: String,
-    required: [true, "Password is mandatory"],
-    minlength: 3
-  }
+  passwordHash: String
 })
 
 userSchema.plugin(uniqueValidator)

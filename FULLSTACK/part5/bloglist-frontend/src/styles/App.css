@@ -1,0 +1,35 @@
+.log-in-button {
+    margin-top: 5px;
+    margin-left: 5px;
+    background-color: rgb(211, 211, 255);
+}
+
+.log-out-button {
+    background-color: rgb(249, 170, 170);
+}
+
+.create-button {
+    margin-top: 5px;
+    margin-bottom: 15px;
+    background-color: rgb(222, 247, 198);
+}
+
+.success {
+    color: green;
+    background: rgb(212, 212, 212);
+    font-size: 20px;
+    border-style: solid;
+    border-radius: 5px;
+    padding: 10px;
+    margin-bottom: 10px;
+}
+  
+.error {
+    color: red;
+    background: rgb(212, 212, 212);
+    font-size: 20px;
+    border-style: solid;
+    border-radius: 5px;
+    padding: 10px;
+    margin-bottom: 10px;
+}

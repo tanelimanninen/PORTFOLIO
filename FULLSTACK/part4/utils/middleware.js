@@ -2,25 +2,6 @@ const jwt = require('jsonwebtoken')
 const logger = require('./logger')
 const User = require('../models/user')
 
-const decodeToken = (token) => {
-  try {
-    return jwt.verify(token, process.env.SECRET)
-  } catch (error) {
-    return null
-  }
-}
-
-//FUNCTION TO GET THE USER FROM THE TOKEN
-const getUserFromToken = async (token) => {
-  const decodedToken = decodeToken(token)
-  if (!decodedToken || !decodedToken.id) {
-    return null
-  }
-
-  const user = await User.findById(decodedToken.id);
-  return user
-}
-
 
 //MIDDLEWARE 1: LOG INFO ABOUT REQUESTS COMING TO THE SERVER
 const requestLogger = (request, response, next) => {
@@ -40,37 +21,59 @@ const errorHandler = (error, request, response, next) => {
   if (error.name === 'ValidationError') {
     return response.status(400).json({ error: error.message })
   }
+  //CONDITION 2: IF GIVEN ID IS UNRECOGNIZABLE
+  else if (error.name === 'CastError') {
+    return response.status(400).send({ error: 'malformatted id' })
+  }
   //CONDITION 2: IF USER TOKEN HAS ERRORS
   else if (error.name ===  'JsonWebTokenError') {
     return response.status(400).json({ error: 'token missing or invalid' })
+  }
+  //CONDITION 3: IF USER TOKEN TIME EXPIRES (15MIN)
+  else if (error.name === 'TokenExpiredError') {
+    return response.status(401).json({
+      error: 'token expired'
+    })
   }
 
   next(error)
 }
 
-//MIDDLEWARE 3: GET THE USER TOKEN
-const tokenExtractor = (request, response, next) => {
+//MIDDLEWARE 3: HANDLE UNKNOWN ENDPOINT REQUESTS
+const unknownEndpoint = (request, response) => {
+  response.status(404).send({ error: 'unknown endpoint' })
+}
+
+//FUNCTION TO RETRIEVE THE USER TOKEN FROM REQUEST
+const getTokenFrom = request => {
   const authorization = request.get('authorization')
-
-  if (authorization && authorization.startsWith('bearer ')) {
-    request.token = authorization.replace('bearer ', '')
-  } else {
-    request.token = null
+  if (authorization && authorization.toLowerCase().startsWith('bearer ')) {
+    return authorization.substring(7)
   }
+  return null
+}
 
+//MIDDLEWARE 4: GET THE USER TOKEN
+const tokenExtractor = (request, response, next) => {
+  request.token = getTokenFrom(request)
   console.log('Extracted token:', request.token)
+
   next()
 }
 
-//MIDDLEWARE 4: FIND OUT THE USER GIVING A REQUEST
+//MIDDLEWARE 5: FIND OUT THE USER GIVING A REQUEST
 const userExtractor = async (request, response, next) => {
-  const token = request.token
+  const token = getTokenFrom(request)
 
-  if (!token) {
-    request.user = null
-  } else {
-    const user = await getUserFromToken(token)
-    request.user = user
+  //IF TOKEN EXISTS
+  if (token) {
+    const decodedToken = jwt.verify(token, process.env.SECRET)
+    //IF TOKEN IS INVALID
+    if (!decodedToken.id) {
+      return response.status(401).json({ error: 'token invalid' })
+    }
+
+    request.user = await User.findById(decodedToken.id)
   }
 
   next()
@@ -79,6 +82,7 @@ const userExtractor = async (request, response, next) => {
 
 module.exports = {
   requestLogger,
+  unknownEndpoint,
   errorHandler,
   tokenExtractor,
   userExtractor

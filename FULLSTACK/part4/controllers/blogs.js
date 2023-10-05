@@ -1,13 +1,14 @@
 const blogsRouter = require('express').Router()
-const jwt = require('jsonwebtoken')
 const Blog = require('../models/blog')
-//const User = require('../models/user')
+
+//const { userExtractor } = require('../utils/middleware')
 
 //ROUTE 1: GET ALL DATA
 blogsRouter.get('/', async (request, response) => {
   const blogs = await Blog
     .find({})
     .populate('user', { username: 1, name: 1 })
+
   response.json(blogs)
 })
 
@@ -15,14 +16,12 @@ blogsRouter.get('/', async (request, response) => {
 blogsRouter.post('/', async (request, response, next) => {
   const body = request.body
 
-  const decodedToken = jwt.verify(request.token, process.env.SECRET)
-
-  if (!decodedToken || !decodedToken.id) {
-    return response.status(401).json({ error: 'token invalid' })
-  }
-
   //GET THE USER WITH TOKEN
   const user = request.user
+
+  if (!user) {
+    return response.status(401).json({ error: 'operation not permitted' })
+  }
 
   //MODEL OF NEW OBJECT, IF LIKES ARE NOT DEFINED IT GETS VALUE OF 0
   const blog = new Blog({
@@ -46,21 +45,22 @@ blogsRouter.post('/', async (request, response, next) => {
 
 //ROUTE 3: DELETE ONE BLOG OBJECT
 blogsRouter.delete('/:id', async (request, response) => {
-  const decodedToken = request.user
-
-  if (!decodedToken || !decodedToken.id) {
-    return response.status(401).json({ error: 'token invalid' })
-  }
-
   //GET THE BLOG TO DELETE
   const blog = await Blog.findById(request.params.id)
 
+  const user = request.user
+
   //CHECK IF USER IS AUTHORIZED
-  if (blog.user.toString() !== decodedToken.id) {
-    return response.status(403).json({ error: 'Not authorized to delete this blog' })
+  if (!user || blog.user.toString() !== user.id.toString()) {
+    return response.status(401).json({ error: 'Not authorized to delete this' })
   }
 
-  await Blog.findByIdAndRemove(request.params.id)
+  //FILTER OUT THE DELETED BLOG FROM USER OBJECTS BLOGS FIELD
+  user.blogs = user.blogs.filter(b => b.toString() !== blog.id.toString() )
+
+  await user.save()
+  await blog.deleteOne()
+
   response.status(204).end()
 })
 

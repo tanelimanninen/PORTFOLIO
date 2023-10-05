@@ -11,7 +11,6 @@ usersRouter.get('/', async (request, response) => {
 })
 
 usersRouter.post('/', async (request, response, next) => {
-  //const { username, name, password } = request.body
   const body = request.body
 
   //CONDITION 1: IF PASSWORD IS MISSING

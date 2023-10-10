@@ -1,14 +1,25 @@
-import Blog from './Blog'
+import { useState } from 'react'
 
-const BlogForm = ({ logOutUser, addBlog, newTitle, handleTitleChange, newAuthor, handleAuthorChange, newUrl, handleUrlChange, user, blogs }) => {
+const BlogForm = ({ createBlog }) => {
+    const [newTitle, setNewTitle] = useState('')
+    const [newAuthor, setNewAuthor] = useState('')
+    const [newUrl, setNewUrl] = useState('')
+
+    const addBlog = (event) => {
+        event.preventDefault()
+        createBlog({
+          title: newTitle,
+          author: newAuthor,
+          url: newUrl
+        })
+
+        setNewTitle('')
+        setNewAuthor('')
+        setNewUrl('')
+    }
+
     return (
         <div>
-            <h2>Blogs</h2>
-
-            <p>{user.username} logged in</p>
-
-            <button className='log-out-button' onClick={logOutUser}>logout</button>
-
             <h3>Create a new blog</h3>
 
             <form onSubmit={addBlog}>
@@ -18,33 +29,29 @@ const BlogForm = ({ logOutUser, addBlog, newTitle, handleTitleChange, newAuthor,
                         value={newTitle} 
                         type='text' 
                         name='Title' 
-                        onChange={handleTitleChange}
+                        onChange={event => setNewTitle(event.target.value)}
                     />
                 </div>
                 <div>
                     Author:                    
                     <input
-                    value={newAuthor}
-                    type='text' 
-                    name='Author'
-                    onChange={handleAuthorChange}
+                        value={newAuthor}
+                        type='text' 
+                        name='Author'
+                        onChange={event => setNewAuthor(event.target.value)}
                     />
                 </div>
                 <div>
                     Url:                    
                     <input
-                    value={newUrl}
-                    type='text'
-                    name='Url'
-                    onChange={handleUrlChange}
+                        value={newUrl}
+                        type='text'
+                        name='Url'
+                        onChange={event => setNewUrl(event.target.value)}
                     />
                 </div>
                 <button className='create-button' type="submit">Create</button>
             </form>
-
-            {blogs.map(blog =>
-                <Blog key={blog.id} blog={blog} />
-            )}
         </div>
     )
 }

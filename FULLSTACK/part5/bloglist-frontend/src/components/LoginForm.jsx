@@ -1,4 +1,10 @@
-const LoginForm = ({ handleLogin, username, password, setUsername, setPassword }) => {
+const LoginForm = ({ 
+    username,
+    password,
+    setUsername,
+    setPassword,
+    handleLogin
+}) => {
     return (
         <div>
             <h2>Log In</h2>

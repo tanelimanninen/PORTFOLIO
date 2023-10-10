@@ -1,19 +1,18 @@
 import './styles/App.css'
-import { useState, useEffect } from 'react'
+import { useState, useEffect, useRef } from 'react'
 import LoginForm from './components/LoginForm'
 import BlogForm from './components/BlogForm'
 import Notification from './components/Notification'
+import Togglable from './components/Togglable'
+import Blog from './components/Blog'
 
 import loginService from './services/login'
 import blogService from './services/blogs'
 
 const App = () => {
   const [blogs, setBlogs] = useState([])
-  const [newTitle, setNewTitle] = useState('')
-  const [newAuthor, setNewAuthor] = useState('')
-  const [newUrl, setNewUrl] = useState('')
   const [username, setUsername] = useState('') 
-  const [password, setPassword] = useState('') 
+  const [password, setPassword] = useState('')
   const [user, setUser] = useState(null)
   const [confirmationMessage, setConfirmationMessage] = useState(null)
   const [errorMessage, setErrorMessage] = useState(null)
@@ -38,45 +37,53 @@ const App = () => {
     }
   }, [])
 
+  const blogFormRef = useRef()
+
   //IF NO BLOGS FOUND, RETURN NULL
   if (!blogs) { 
     return null 
   }
 
   //ADD A NEW BLOG TO THE LIST
-  const addBlog = (event) => {
-    event.preventDefault()
-    console.log('Button clicked', event.target)
-
-    const blogObject = {
-      title: newTitle,
-      author: newAuthor,
-      url: newUrl
-    }
-
+  const addBlog = (blogObject) => {
+    blogFormRef.current.toggleVisibility()
+    //POST METHOD
     blogService
       .create(blogObject)
       .then(returnedBlog => {
         setBlogs(blogs.concat(returnedBlog))
 
-        //AFTER ADDITION EMPTY INPUT VALUES
-        setNewTitle('')
-        setNewAuthor('')
-        setNewUrl('')
-
         //CONFIRM THE USER THAT ADDITION IS SUCCESFUL
-        setConfirmationMessage(`Added ${newTitle} to the BlogList, by ${newAuthor}`)
+        setConfirmationMessage(`Added '${blogObject.title}' to the BlogList by ${blogObject.author}`)
         setTimeout(() => {
           setConfirmationMessage(null)
         }, 4000)
       })
       //CATCH ERROR AND SHOW MESSAGE TO USER
       .catch(error => {
-        setErrorMessage(`Oops! Addition of ${newTitle} to the BlogList failed`)
+        setErrorMessage(`Oops! Addition of '${blogObject.title}' to the BlogList failed`)
             setTimeout(() => {
               setErrorMessage(null)
             }, 4000)
       })
+  }
+
+  //UPDATE THE LIKES AMOUNT WHEN LIKE-BUTTON PUSHED
+  const updateLikes = async (id) => {
+    console.log('like button pushed!')
+
+    const blogToUpdate = blogs.find(blog => blog.id === id)
+    const updatedBlog = { ...blogToUpdate, likes: blogToUpdate.likes + 1 };
+
+    try {
+      const returnedBlog = await blogService.update(id, updatedBlog);
+      setBlogs(blogs.map(blog =>
+        blog.id === id ? returnedBlog : blog
+      ));
+    } catch (error) {
+      // Handle error
+      console.error('Failed to update likes:', error);
+    }
   }
 
   //EVENTHANDLER FOR LOGIN
@@ -103,24 +110,21 @@ const App = () => {
     }
   }
 
-  //EVENT HANDLERS FOR BLOG INPUT FIELDS
-  const handleTitleChange = (event) => {
-    setNewTitle(event.target.value)
-  }
-
-  const handleAuthorChange = (event) => {
-    setNewAuthor(event.target.value)
-  }
-
-  const handleUrlChange = (event) => {
-    setNewUrl(event.target.value)
-  }
- 
   const logOutUser = () => {
     window.localStorage.removeItem('loggedBlogAppUser')
     setUser(null)
     console.log('logged out')
   }
+
+  //BLOG-FORM COMPONENT WITH 2 DIFFERENT VIEWS
+  const blogForm = () => (
+    <Togglable buttonLabel="New blog" ref={blogFormRef}>
+      <BlogForm 
+        createBlog={addBlog}
+      />
+    </Togglable>
+  )
+
 
   if (user === null) {
     return (
@@ -144,18 +148,17 @@ const App = () => {
       <Notification message={confirmationMessage} isSuccess={true} />
       <Notification message={errorMessage} isSuccess={false} />
 
-      <BlogForm
-        logOutUser={logOutUser}
-        addBlog={addBlog}
-        newTitle={newTitle}
-        handleTitleChange={handleTitleChange}
-        newAuthor={newAuthor}
-        handleAuthorChange={handleAuthorChange}
-        newUrl={newUrl}
-        handleUrlChange={handleUrlChange}
-        user={user}
-        blogs={blogs} 
-      />
+      <h2>Blogs</h2>
+
+      <p>{user.username} logged in</p>
+
+      <button className='log-out-button' onClick={logOutUser}>logout</button>
+      
+      {blogForm()}
+      
+      {blogs.map(blog =>
+        <Blog key={blog.id} blog={blog} updateLikes={updateLikes} />
+      )}
     </div>
   )
 }

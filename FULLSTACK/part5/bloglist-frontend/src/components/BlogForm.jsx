@@ -1,21 +1,21 @@
-import { useState } from 'react'
+import { useState } from "react"
 
 const BlogForm = ({ createBlog }) => {
-    const [newTitle, setNewTitle] = useState('')
-    const [newAuthor, setNewAuthor] = useState('')
-    const [newUrl, setNewUrl] = useState('')
+    const [newTitle, setNewTitle] = useState("")
+    const [newAuthor, setNewAuthor] = useState("")
+    const [newUrl, setNewUrl] = useState("")
 
     const addBlog = (event) => {
         event.preventDefault()
         createBlog({
-          title: newTitle,
-          author: newAuthor,
-          url: newUrl
+            title: newTitle,
+            author: newAuthor,
+            url: newUrl
         })
 
-        setNewTitle('')
-        setNewAuthor('')
-        setNewUrl('')
+        setNewTitle("")
+        setNewAuthor("")
+        setNewUrl("")
     }
 
     return (
@@ -24,25 +24,25 @@ const BlogForm = ({ createBlog }) => {
 
             <form onSubmit={addBlog}>
                 <div>
-                    Title:                    
-                    <input 
-                        value={newTitle} 
-                        type='text' 
-                        name='Title' 
+                    Title:
+                    <input
+                        value={newTitle}
+                        type='text'
+                        name='Title'
                         onChange={event => setNewTitle(event.target.value)}
                     />
                 </div>
                 <div>
-                    Author:                    
+                    Author:
                     <input
                         value={newAuthor}
-                        type='text' 
+                        type='text'
                         name='Author'
                         onChange={event => setNewAuthor(event.target.value)}
                     />
                 </div>
                 <div>
-                    Url:                    
+                    Url:
                     <input
                         value={newUrl}
                         type='text'

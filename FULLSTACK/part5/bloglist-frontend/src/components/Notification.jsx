@@ -1,14 +1,14 @@
 const Notification = ({ message, isSuccess }) => {
     if (message === null) {
-      return null
+        return null
     }
-    
-    const className = isSuccess ? 'success' : 'error'
+
+    const className = isSuccess ? "success" : "error"
 
     return (
-      <div className={className}>
-        {message}
-      </div>
+        <div className={className}>
+            {message}
+        </div>
     )
 }
 

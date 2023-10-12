@@ -2,7 +2,6 @@ import { useState } from "react"
 
 const Blog = ({ blog, user, updateLikes, deleteBlog }) => {
     const [detailsVisible, setDetailsVisible] = useState(false)
-
     //CHANGE THE VISIBILTY STATE
     const toggleDetails = () => {
         setDetailsVisible(!detailsVisible)

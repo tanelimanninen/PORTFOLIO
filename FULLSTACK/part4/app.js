@@ -1,5 +1,4 @@
 const config = require('./utils/config')
-//const http = require('http')
 const express = require('express')
 require('express-async-errors')
 const app = express()
@@ -10,6 +9,12 @@ const mongoose = require('mongoose')
 const loginRouter = require('./controllers/login')
 const blogsRouter = require('./controllers/blogs')
 const usersRouter = require('./controllers/users')
+
+//USE THIS ROUTER FOR TESTING
+if (process.env.NODE_ENV === 'test') {
+  const testingRouter = require('./controllers/testing')
+  app.use('/api/testing', testingRouter)
+}
 
 const middleware = require('./utils/middleware')
 

@@ -19,17 +19,17 @@ const Blog = ({ blog, user, updateLikes, deleteBlog }) => {
         <div className="single-blog">
             <div>
                 {blog.title} - {blog.author}
-                <button className="view-button" onClick={toggleDetails}>{detailsVisible ? "Hide" : "View"}</button>
+                <button id="view-button" className="view-button" onClick={toggleDetails}>{detailsVisible ? "Hide" : "View"}</button>
             </div>
             {detailsVisible && (
                 <div>
                     <ul>
                         <li>URL: {blog.url}</li>
-                        <li>Likes: {blog.likes} <button className="like-button" onClick={() => updateLikes(blog.id)} >Like</button></li>
+                        <li>Likes: {blog.likes} <button id="like-button" className="like-button" onClick={() => updateLikes(blog.id)} >Like</button></li>
                         <li>Author: {blog.author}</li>
                     </ul>
                     {showDeleteButton() && (
-                        <button className="delete-button" onClick={() => deleteBlog(blog.id)}>Delete</button>
+                        <button id="delete-button" className="delete-button" onClick={() => deleteBlog(blog.id)}>Delete</button>
                     )}
                 </div>
             )}

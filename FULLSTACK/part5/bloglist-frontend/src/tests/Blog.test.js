@@ -21,7 +21,7 @@ test("renders title", () => {
     expect(element).toBeDefined()
 })
 
-//2. TEST (FIRST TESTING THAT BUTTON IS PUSHED)
+//2. TEST
 test("renders rest of the data when button is pushed", async () => {
     const blog = {
         title: "Otsikko",

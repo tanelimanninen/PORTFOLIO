@@ -132,5 +132,27 @@ describe("Blog app", function() {
             //CHECK THAT PAGE DOESN'T CONTAIN DELETE-BUTTON
             cy.get("#delete-button").should("not.exist")
         })
+
+        //8. TEST
+        it("Multiple blogs are listed by the amount of likes", function() {
+            //CREATE 2 BLOGS WITH USER 1
+            cy.createBlog({
+                title: "new blog for testing",
+                author: "test writer",
+                url: "www.test-blog.com/new-blog-for-testing/",
+                likes: 12
+            })
+
+            cy.createBlog({
+                title: "second new blog",
+                author: "test writer",
+                url: "www.test-blog.com/second-new-blog/",
+                likes: 55
+            })
+
+            //CHECK THAT THE ORDER IS AS EXPECTED
+            cy.get(".single-blog").eq(0).should("contain", "second new blog - test writer")
+            cy.get(".single-blog").eq(1).should("contain", "new blog for testing - test writer")
+        })
     })
 })

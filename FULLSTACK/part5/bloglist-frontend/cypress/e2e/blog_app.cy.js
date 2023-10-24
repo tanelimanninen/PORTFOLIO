@@ -33,7 +33,7 @@ describe("Blog app", function() {
         cy.contains("login")
     })
 
-    describe("Login",function() {
+    describe("Login", function() {
         //2. TEST
         it("succeeds with correct credentials", function() {
             /*cy.get("#username").type("user1")

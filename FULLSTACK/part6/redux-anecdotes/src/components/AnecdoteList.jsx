@@ -1,15 +1,20 @@
 import { useSelector, useDispatch } from 'react-redux'
-import { handleVotes } from '../reducers/anecdoteReducer'
+import { addVote } from '../reducers/anecdoteReducer'
+import { handleNotification, /*unSetNotification*/ } from '../reducers/notificationReducer'
 
 const AnecdoteList = () => {
     const anecdotes = useSelector(state => state.anecdotes)
     const filter = useSelector((state) => state.filter)
     const dispatch = useDispatch()
 
-    //DISPATCH NEW VOTE
-    const vote = (id) => {
+    //DISPATCH NEW VOTE AND NOTIFICATION
+    const vote = async (id, content) => {
         console.log('vote', id)
-        dispatch(handleVotes({ id }))
+        console.log(content)
+
+        dispatch(addVote(id, content))
+        
+        dispatch(handleNotification(`Vote added to "${content}"`, 5))
     }
 
     //FUNCTION FOR SORTING ARRAYS BY AMOUNT OF VOTES FIELD
@@ -35,7 +40,7 @@ const AnecdoteList = () => {
                 </div>
                 <div>
                     has {anecdote.votes}
-                    <button onClick={() => vote(anecdote.id)}>vote</button>
+                    <button onClick={() => vote(anecdote.id, anecdote.content)}>vote</button>
                 </div>
                 </div>
             )}

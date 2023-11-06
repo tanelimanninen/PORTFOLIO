@@ -1,0 +1,69 @@
+{
+  "notes": [
+    {
+      "id": 1,
+      "content": "custom-hooks are awesome!"
+    },
+    {
+      "id": 2,
+      "content": "best feature ever <3"
+    },
+    {
+      "content": "joulu on peruttu",
+      "id": 3
+    },
+    {
+      "content": "olut on parasta",
+      "id": 4
+    },
+    {
+      "content": "haista huilu",
+      "id": 5
+    },
+    {
+      "content": "juokse maratooni",
+      "id": 6
+    },
+    {
+      "content": "mee kauppaan",
+      "id": 7
+    }
+  ],
+  "persons": [
+    {
+      "id": 1,
+      "name": "mluukkai",
+      "number": "040-5483923"
+    },
+    {
+      "id": 2,
+      "name": "hellas",
+      "number": "012-123123"
+    },
+    {
+      "name": "esa",
+      "number": "1233",
+      "id": 3
+    },
+    {
+      "name": "pasi kuikka",
+      "number": "+123 45 6789",
+      "id": 4
+    },
+    {
+      "name": "matti",
+      "number": "999",
+      "id": 5
+    },
+    {
+      "name": "pekka",
+      "number": "3210",
+      "id": 6
+    },
+    {
+      "name": "marja-liisa",
+      "number": "43434343",
+      "id": 7
+    }
+  ]
+}

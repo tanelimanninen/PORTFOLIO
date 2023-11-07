@@ -1,0 +1,73 @@
+.log-in-button {
+  margin-top: 5px;
+  margin-left: 5px;
+  background-color: rgb(211, 211, 255);
+}
+
+.cancel-button {
+  margin-top: 2.5px;
+  margin-bottom: 15px;
+  background-color: rgb(244, 208, 208);
+}
+
+.log-out-button {
+  margin-bottom: 5px;
+  background-color: rgb(249, 170, 170);
+}
+
+.new-blog-button {
+  margin-top: 5px;
+  margin-bottom: 15px;
+  background-color: rgb(222, 247, 198);
+}
+
+.view-button {
+  background-color: rgb(224, 224, 255);
+  margin-left: 5px;
+}
+
+.create-button {
+  margin-top: 5px;
+  margin-bottom: 2.5px;
+  background-color: rgb(222, 247, 198);
+}
+
+.like-button {
+  background-color: rgb(255, 244, 180);
+}
+
+.delete-button {
+  background-color: rgb(255, 136, 160);
+}
+
+.success {
+  color: green;
+  background: rgb(212, 212, 212);
+  font-size: 20px;
+  border-style: solid;
+  border-radius: 5px;
+  padding: 10px;
+  margin-bottom: 10px;
+}
+
+.error {
+  color: red;
+  background: rgb(212, 212, 212);
+  font-size: 20px;
+  border-style: solid;
+  border-radius: 5px;
+  padding: 10px;
+  margin-bottom: 10px;
+}
+
+.single-blog {
+  border: 1px solid black;
+  padding-top: 5px;
+  padding-left: 5px;
+  padding-bottom: 5px;
+  margin-bottom: 5px;
+}
+
+ul {
+  list-style: none;
+}

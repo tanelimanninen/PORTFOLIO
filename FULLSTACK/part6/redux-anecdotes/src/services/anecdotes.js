@@ -13,7 +13,6 @@ const createNew = async (content) => {
     return response.data
 }
 
-//ÄÄNET EI TALLENNU OIKEIN SERVERILLE VIELÄ
 const updateVotes = async (id) => {
     const response = await axios.get(`${baseUrl}/${id}`)
     const object = response.data

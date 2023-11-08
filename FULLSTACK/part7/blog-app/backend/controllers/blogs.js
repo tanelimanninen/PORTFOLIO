@@ -87,4 +87,22 @@ blogsRouter.put("/:id", async (request, response, next) => {
   }
 });
 
+//ROUTE 5: GET SINGLE DATA OBJECT
+blogsRouter.get("/:id", async (request, response, next) => {
+  try {
+    const blog = await Blog.findById(request.params.id).populate("user", {
+      username: 1,
+      name: 1,
+    });
+
+    if (blog) {
+      response.json(blog);
+    } else {
+      response.status(404).end(); // Return a 404 status if the blog is not found
+    }
+  } catch (exception) {
+    next(exception);
+  }
+});
+
 module.exports = blogsRouter;

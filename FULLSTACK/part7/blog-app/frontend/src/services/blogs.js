@@ -24,9 +24,19 @@ const create = async (newObject) => {
 };
 
 //PUT
-const update = async (id, newObject) => {
-  const response = await axios.put(`${baseUrl}/${id}`, newObject);
-  return response.data;
+const update = async (id) => {
+  const response = await axios.get(`${baseUrl}/${id}`);
+  const object = response.data;
+  console.log(object);
+
+  const updatedObject = {
+    ...object,
+    likes: object.likes + 1,
+  };
+  console.log(updatedObject);
+
+  const putResponse = await axios.put(`${baseUrl}/${id}`, updatedObject);
+  return putResponse.data;
 };
 
 //DELETE

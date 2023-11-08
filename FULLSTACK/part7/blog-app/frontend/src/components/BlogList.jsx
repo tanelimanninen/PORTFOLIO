@@ -1,7 +1,7 @@
 import { useDispatch, useSelector } from "react-redux";
 import { addLike, cancelBlog } from "../reducers/blogReducer";
 import { handleNotification } from "../reducers/notificationReducer";
-import blogService from "../services/blogs";
+
 import Blog from "./Blog";
 
 const BlogList = ({ user }) => {

@@ -1,9 +1,10 @@
 import "./styles/App.css";
-import { useState, useEffect, useRef } from "react";
+import { useEffect, useRef } from "react";
 import { useDispatch, useSelector } from "react-redux";
 
 import { handleNotification } from "./reducers/notificationReducer";
 import { initializeBlogs, createBlog } from "./reducers/blogReducer";
+import { setUser, logoutUser } from "./reducers/userReducer";
 
 import LoginForm from "./components/LoginForm";
 import BlogForm from "./components/BlogForm";
@@ -11,13 +12,11 @@ import Notification from "./components/Notification";
 import Togglable from "./components/Togglable";
 import BlogList from "./components/BlogList";
 
-import loginService from "./services/login";
 import blogService from "./services/blogs";
 
 const App = () => {
-  const [username, setUsername] = useState("");
-  const [password, setPassword] = useState("");
-  const [user, setUser] = useState(null);
+  const user = useSelector((state) => state.user);
+  const notification = useSelector((state) => state.notification);
 
   const dispatch = useDispatch();
 
@@ -33,7 +32,7 @@ const App = () => {
     if (loggedUserJSON) {
       console.log("logged user found");
       const user = JSON.parse(loggedUserJSON);
-      setUser(user);
+      dispatch(setUser(user));
       blogService.setToken(user.token);
     }
   }, []);
@@ -71,32 +70,9 @@ const App = () => {
       });
   };
 
-  //EVENTHANDLER FOR LOGIN
-  const handleLogin = async (event) => {
-    event.preventDefault();
-
-    try {
-      console.log("logging in with", username, password);
-      const user = await loginService.login({
-        username,
-        password,
-      });
-      window.localStorage.setItem("loggedBlogAppUser", JSON.stringify(user));
-      blogService.setToken(user.token);
-      setUser(user);
-      console.log(user);
-      setUsername("");
-      setPassword("");
-    } catch (exception) {
-      //REDUX
-      dispatch(handleNotification("Wrong username of password", 5, "error"));
-    }
-  };
-
   const logOutUser = () => {
-    window.localStorage.removeItem("loggedBlogAppUser");
-    setUser(null);
-    console.log("logged out");
+    //LOG OUT USER
+    dispatch(logoutUser());
   };
 
   //BLOG-FORM COMPONENT WITH 2 DIFFERENT VIEWS
@@ -106,20 +82,12 @@ const App = () => {
     </Togglable>
   );
 
-  const notification = useSelector((state) => state.notification);
-
   if (user === null) {
     return (
       <div>
         {notification !== null && <Notification />}
 
-        <LoginForm
-          handleLogin={handleLogin}
-          username={username}
-          password={password}
-          setUsername={setUsername}
-          setPassword={setPassword}
-        />
+        <LoginForm />
       </div>
     );
   }

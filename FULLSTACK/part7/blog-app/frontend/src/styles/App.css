@@ -71,3 +71,8 @@
 ul {
   list-style: none;
 }
+
+td, th {
+  text-align: left;
+  padding-right: 25px;
+}

@@ -1,23 +1,36 @@
+//CSS STYLES
 import "./styles/App.css";
+//REACT LIBRARY IMPORTS
 import { useEffect, useRef } from "react";
 import { useDispatch, useSelector } from "react-redux";
-
+import {
+  Routes,
+  Route,
+  /*useMatch,*/
+} from 'react-router-dom';
+//REDUX REDUCERS
 import { handleNotification } from "./reducers/notificationReducer";
 import { initializeBlogs, createBlog } from "./reducers/blogReducer";
 import { setUser, logoutUser } from "./reducers/userReducer";
-
+import { initializeUsers } from "./reducers/usersReducer";
+//COMPONENTS
 import LoginForm from "./components/LoginForm";
 import BlogForm from "./components/BlogForm";
 import Notification from "./components/Notification";
 import Togglable from "./components/Togglable";
 import BlogList from "./components/BlogList";
-
+import Users from "./components/Users"
+import User from "./components/User"
+//SERVER SERVICES
 import blogService from "./services/blogs";
+import userService from "./services/users";
 
 const App = () => {
   const user = useSelector((state) => state.user);
+  const users = useSelector((state) => state.users);
   const notification = useSelector((state) => state.notification);
 
+  console.log(users)
   const dispatch = useDispatch();
 
   //REDUX (GET ALL BLOGS FROM SERVER)
@@ -25,6 +38,13 @@ const App = () => {
     blogService;
     dispatch(initializeBlogs());
   }, []);
+
+  //REDUX (GET ALL USERS FROM SERVER)
+  useEffect(() => {
+    userService;
+    dispatch(initializeUsers());
+  }, []);
+
 
   //SET THE USER IF STORAGE HAS LOGGED IN USER ON PAGE LOAD
   useEffect(() => {
@@ -92,23 +112,36 @@ const App = () => {
     );
   }
 
+  /*const match = useMatch('/users/:id')
+  const userToFind = match
+    ? users.find(user => user.id === Number(match.params.id))
+    : <null></null>*/
+
   return (
     <div>
       {notification !== null && <Notification />}
 
-      <h2>Blogs</h2>
+      <h1>Blogs</h1>
 
       <p>{user.username} logged in</p>
 
       <button className="log-out-button" onClick={logOutUser}>
-        logout
+          logout
       </button>
 
-      {blogForm()}
-
-      <BlogList user={user} />
+      <Routes>
+        <Route path="/" element={<div>{blogForm()} <BlogList user={user} /></div>} />
+        <Route path="/users" element={<Users users={users} />} />
+        <Route path="/users/:id" element={<User users={users} />} />
+        
+      </Routes>
     </div>
   );
 };
 
 export default App;
+
+/* REMOVED FROM THE APP RETURN
+<Route path="/users/:id" element={<User userToFind={userToFind} />} />
+
+*/

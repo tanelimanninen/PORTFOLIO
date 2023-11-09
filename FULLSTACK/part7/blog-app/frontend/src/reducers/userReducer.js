@@ -7,9 +7,11 @@ const userSlice = createSlice({
   name: "user",
   initialState: null,
   reducers: {
+    //ACTION CREATOR 1
     setUser(state, action) {
       return action.payload;
     },
+    //ACTION CREATOR 2
     clearUser() {
       return null;
     },

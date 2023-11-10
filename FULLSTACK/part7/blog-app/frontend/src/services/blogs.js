@@ -7,13 +7,13 @@ const setToken = (newToken) => {
   token = `Bearer ${newToken}`;
 };
 
-//GET
+//GET ALL BLOGS
 const getAll = () => {
   const request = axios.get(baseUrl);
   return request.then((response) => response.data);
 };
 
-//POST
+//POST NEW BLOG
 const create = async (newObject) => {
   const config = {
     headers: { Authorization: token },
@@ -23,7 +23,7 @@ const create = async (newObject) => {
   return response.data;
 };
 
-//PUT
+//UPDATE A BLOG
 const update = async (id) => {
   const response = await axios.get(`${baseUrl}/${id}`);
   const object = response.data;
@@ -39,7 +39,7 @@ const update = async (id) => {
   return putResponse.data;
 };
 
-//DELETE
+//DELETE A BLOG
 const remove = async (id) => {
   const config = {
     headers: { Authorization: token },
@@ -49,4 +49,24 @@ const remove = async (id) => {
   return response.data;
 };
 
-export default { getAll, create, update, remove, setToken };
+//GET ALL COMMENTS OF A BLOG tällä hetkellä turha, koska blogit palauttaa jo kommentit osana objektiaan
+const getComments = (id) => {
+  const request = axios.get(`${baseUrl}/${id}/comments`);
+  return request.then((response) => response.data);
+};
+
+//POST NEW COMMENT
+const createComment = async (id, comment) => {
+  const response = await axios.post(`${baseUrl}/${id}/comments`, { comment });
+  return response.data;
+};
+
+export default {
+  getAll,
+  create,
+  update,
+  remove,
+  getComments,
+  createComment,
+  setToken,
+};

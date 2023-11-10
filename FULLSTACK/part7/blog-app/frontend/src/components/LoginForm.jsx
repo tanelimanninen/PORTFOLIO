@@ -2,6 +2,7 @@ import { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 
 import { loginUser } from "../reducers/userReducer";
+import { handleNotification } from "../reducers/notificationReducer";
 
 const LoginForm = () => {
   const [username, setUsername] = useState("");

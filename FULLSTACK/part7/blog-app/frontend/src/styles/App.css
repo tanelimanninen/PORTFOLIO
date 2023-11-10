@@ -34,6 +34,7 @@
 
 .like-button {
   background-color: rgb(255, 244, 180);
+  margin-left: 5px;
 }
 
 .delete-button {
@@ -72,7 +73,9 @@ ul {
   list-style: none;
 }
 
-td, th {
+td,
+th {
   text-align: left;
   padding-right: 25px;
+  padding-bottom: 10px;
 }

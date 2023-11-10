@@ -3,11 +3,7 @@ import "./styles/App.css";
 //REACT LIBRARY IMPORTS
 import { useEffect, useRef } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import {
-  Routes,
-  Route,
-  /*useMatch,*/
-} from 'react-router-dom';
+import { Routes, Route } from "react-router-dom";
 //REDUX REDUCERS
 import { handleNotification } from "./reducers/notificationReducer";
 import { initializeBlogs, createBlog } from "./reducers/blogReducer";
@@ -19,8 +15,10 @@ import BlogForm from "./components/BlogForm";
 import Notification from "./components/Notification";
 import Togglable from "./components/Togglable";
 import BlogList from "./components/BlogList";
-import Users from "./components/Users"
-import User from "./components/User"
+import Blog from "./components/Blog";
+import Users from "./components/Users";
+import User from "./components/User";
+import Menu from "./components/Menu";
 //SERVER SERVICES
 import blogService from "./services/blogs";
 import userService from "./services/users";
@@ -30,7 +28,7 @@ const App = () => {
   const users = useSelector((state) => state.users);
   const notification = useSelector((state) => state.notification);
 
-  console.log(users)
+  console.log(users);
   const dispatch = useDispatch();
 
   //REDUX (GET ALL BLOGS FROM SERVER)
@@ -44,7 +42,6 @@ const App = () => {
     userService;
     dispatch(initializeUsers());
   }, []);
-
 
   //SET THE USER IF STORAGE HAS LOGGED IN USER ON PAGE LOAD
   useEffect(() => {
@@ -112,13 +109,10 @@ const App = () => {
     );
   }
 
-  /*const match = useMatch('/users/:id')
-  const userToFind = match
-    ? users.find(user => user.id === Number(match.params.id))
-    : <null></null>*/
-
   return (
     <div>
+      <Menu />
+
       {notification !== null && <Notification />}
 
       <h1>Blogs</h1>
@@ -126,22 +120,24 @@ const App = () => {
       <p>{user.username} logged in</p>
 
       <button className="log-out-button" onClick={logOutUser}>
-          logout
+        logout
       </button>
 
       <Routes>
-        <Route path="/" element={<div>{blogForm()} <BlogList user={user} /></div>} />
+        <Route
+          path="/"
+          element={
+            <div>
+              {blogForm()} <BlogList />
+            </div>
+          }
+        />
+        <Route path="/blogs/:id" element={<Blog user={user} />} />
         <Route path="/users" element={<Users users={users} />} />
         <Route path="/users/:id" element={<User users={users} />} />
-        
       </Routes>
     </div>
   );
 };
 
 export default App;
-
-/* REMOVED FROM THE APP RETURN
-<Route path="/users/:id" element={<User userToFind={userToFind} />} />
-
-*/

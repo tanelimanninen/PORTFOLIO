@@ -105,4 +105,36 @@ blogsRouter.get("/:id", async (request, response, next) => {
   }
 });
 
+//ROUTE 6: GET ALL COMMENTS OF A SPECIFIC BLOG
+blogsRouter.get("/:id/comments", async (request, response, next) => {
+  try {
+    const blog = await Blog.findById(request.params.id);
+    if (blog) {
+      const comments = blog.comments || [];
+      response.json(comments);
+    } else {
+      response.status(404).end();
+    }
+  } catch (exception) {
+    next(exception);
+  }
+});
+
+//ROUTE 7: MAKE A COMMENT
+blogsRouter.post("/:id/comments", async (request, response, next) => {
+  try {
+    const blog = await Blog.findById(request.params.id);
+    if (blog) {
+      const newComment = request.body.comment;
+      blog.comments = [...(blog.comments || []), newComment];
+      const updatedBlog = await blog.save();
+      response.status(201).json(updatedBlog.comments);
+    } else {
+      response.status(404).end(); // Return a 404 status if the blog is not found
+    }
+  } catch (exception) {
+    next(exception);
+  }
+});
+
 module.exports = blogsRouter;

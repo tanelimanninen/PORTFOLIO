@@ -31,11 +31,28 @@ const blogSlice = createSlice({
       const id = action.payload.id;
       return state.filter((blog) => blog.id !== id);
     },
+    //ACTION CREATOR 5 tällä hetkellä turha
+    setComments(state, action) {
+      return action.payload;
+    },
+    appendComment(state, action) {
+      return state.map((blog) =>
+        blog.id === action.payload.blogId
+          ? { ...blog, comments: [...blog.comments, action.payload.comment] }
+          : blog,
+      );
+    },
   },
 });
 
-export const { setBlogs, appendBlog, handleLikes, removeBlog } =
-  blogSlice.actions;
+export const {
+  setBlogs,
+  appendBlog,
+  handleLikes,
+  removeBlog,
+  setComments,
+  appendComment,
+} = blogSlice.actions;
 
 //ASYNC ACTION 1 (SHOW ALL DATA)
 export const initializeBlogs = () => {
@@ -66,6 +83,22 @@ export const cancelBlog = (id) => {
   return async (dispatch) => {
     await blogService.remove(id);
     dispatch(removeBlog({ id }));
+  };
+};
+
+//ASYNC ACTION 5 (GET COMMENTS) tällä hetkellä turha
+export const initializeComments = (id) => {
+  return async (dispatch) => {
+    const comments = await blogService.getComments(id);
+    dispatch(setComments(comments));
+  };
+};
+
+//ASYNC FUNTION 6 (CREATE COMMENT)
+export const makeComment = (id, comment) => {
+  return async (dispatch) => {
+    const newComment = await blogService.createComment(id, comment);
+    dispatch(appendComment(newComment));
   };
 };
 

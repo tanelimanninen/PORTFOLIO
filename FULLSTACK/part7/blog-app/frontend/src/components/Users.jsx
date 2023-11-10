@@ -1,19 +1,39 @@
-import { useSelector } from "react-redux";
-import { Link } from 'react-router-dom';
+import { Link } from "react-router-dom";
 
 const Users = ({ users }) => {
-    /*const users = useSelector((state) => state.users);*/
-    console.log(users)
+  console.log(users);
 
-    return (
-        <div>
+  return (
+    <div>
+      <h2>Users</h2>
+
+      <table>
+        <thead>
+          <tr>
+            <th>Username</th>
+            <th>Amount of Blogs</th>
+          </tr>
+        </thead>
+        <tbody>
+          {users.map((user) => (
+            <tr key={user.id}>
+              <td>
+                <Link to={`/users/${user.id}`}>{user.username}</Link>
+              </td>
+              <td>{user.blogs.length}</td>
+            </tr>
+          ))}
+        </tbody>
+      </table>
+    </div>
+  );
+};
+
+export default Users;
+
+/*
+<div>
             <h2>Users</h2>
-
-            {users.map((user) => (
-                <p key={user.id}>
-                    <Link to={`/users/${user.id}`}>{user.username} - - - Blogs Total: {user.blogs.length}</Link>
-                </p>
-            ))}
 
             <table>
                 <tr>
@@ -36,7 +56,4 @@ const Users = ({ users }) => {
                 </td>
             </table>
         </div>
-    )
-}
-
-export default Users
+*/

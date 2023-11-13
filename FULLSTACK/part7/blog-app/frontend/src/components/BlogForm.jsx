@@ -1,4 +1,4 @@
-import { TextField, Button } from '@mui/material';
+import { TextField, Button } from "@mui/material";
 import { useState } from "react";
 
 const BlogForm = ({ createBlog }) => {
@@ -24,7 +24,6 @@ const BlogForm = ({ createBlog }) => {
       <h3>Create a new blog</h3>
 
       <form onSubmit={addBlog}>
-
         <div>
           <TextField
             id="blog-title"
@@ -53,7 +52,13 @@ const BlogForm = ({ createBlog }) => {
           />
         </div>
         <div>
-          <Button style={{ marginTop: 5, marginBottom: 5 }} id="create-button" variant="contained" color="primary" type="submit">
+          <Button
+            style={{ marginTop: 5, marginBottom: 5 }}
+            id="create-button"
+            variant="contained"
+            color="primary"
+            type="submit"
+          >
             Create
           </Button>
         </div>

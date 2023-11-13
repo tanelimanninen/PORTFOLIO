@@ -6,7 +6,7 @@ import {
   TableRow,
   Paper,
   TableHead,
-} from '@mui/material'
+} from "@mui/material";
 import { Link } from "react-router-dom";
 
 const Users = ({ users }) => {
@@ -20,8 +20,10 @@ const Users = ({ users }) => {
         <Table>
           <TableHead>
             <TableRow>
-              <TableCell style={{ fontWeight: 'bold' }}>Username</TableCell>
-              <TableCell style={{ fontWeight: 'bold' }}>Amount of Blogs</TableCell>
+              <TableCell style={{ fontWeight: "bold" }}>Username</TableCell>
+              <TableCell style={{ fontWeight: "bold" }}>
+                Amount of Blogs
+              </TableCell>
             </TableRow>
           </TableHead>
           <TableBody>

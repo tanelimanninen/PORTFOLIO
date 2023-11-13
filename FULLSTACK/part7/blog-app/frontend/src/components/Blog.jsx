@@ -5,18 +5,18 @@ import {
   TableContainer,
   TableRow,
   Paper,
-  Button
-} from '@mui/material';
-import { createTheme, ThemeProvider } from '@mui/material/styles';
+  Button,
+} from "@mui/material";
+import { createTheme, ThemeProvider } from "@mui/material/styles";
 
 //custom theme
 const theme = createTheme({
   palette: {
     primary: {
-      main: '#ffc107',
+      main: "#ffc107",
     },
     secondary: {
-      main: '#ff1744',
+      main: "#ff1744",
     },
   },
 });
@@ -97,9 +97,15 @@ const Blog = ({ user }) => {
 
       <p>
         Likes: {blog.likes}
-
         <ThemeProvider theme={theme}>
-          <Button style={{ marginLeft: 5 }} variant="contained" color="primary" onClick={() => updateLikes(blog.id)}>Like</Button>
+          <Button
+            style={{ marginLeft: 5 }}
+            variant="contained"
+            color="primary"
+            onClick={() => updateLikes(blog.id)}
+          >
+            Like
+          </Button>
         </ThemeProvider>
       </p>
 
@@ -107,7 +113,13 @@ const Blog = ({ user }) => {
 
       {showDeleteButton() && (
         <ThemeProvider theme={theme}>
-          <Button variant="contained" color="secondary" onClick={() => deleteBlog(blog.id)}>Delete</Button>
+          <Button
+            variant="contained"
+            color="secondary"
+            onClick={() => deleteBlog(blog.id)}
+          >
+            Delete
+          </Button>
         </ThemeProvider>
       )}
 
@@ -118,17 +130,17 @@ const Blog = ({ user }) => {
       <TableContainer component={Paper}>
         <Table>
           <TableBody>
-          {blog.comments?.length > 0 ? (
-            blog.comments.map((comment, index) => (
-            <TableRow key={index}>
-              <TableCell>{comment}</TableCell>
-            </TableRow>
-            ))
-          )  : (
-            <TableRow>
-              <TableCell>No added comments.</TableCell>
-            </TableRow>
-          )}
+            {blog.comments?.length > 0 ? (
+              blog.comments.map((comment, index) => (
+                <TableRow key={index}>
+                  <TableCell>{comment}</TableCell>
+                </TableRow>
+              ))
+            ) : (
+              <TableRow>
+                <TableCell>No added comments.</TableCell>
+              </TableRow>
+            )}
           </TableBody>
         </Table>
       </TableContainer>

@@ -1,4 +1,4 @@
-import { TextField, Button } from '@mui/material';
+import { TextField, Button } from "@mui/material";
 import { useState } from "react";
 import { useDispatch } from "react-redux";
 
@@ -35,7 +35,7 @@ const CommentForm = ({ blog }) => {
   };
 
   return (
-    <div className='comment-form'>
+    <div className="comment-form">
       <div>
         <TextField
           label="comment"
@@ -46,7 +46,13 @@ const CommentForm = ({ blog }) => {
       </div>
 
       <div>
-        <Button style={{ marginTop: 5 }} variant="contained" color="primary" type="submit" onClick={handleSubmit}>
+        <Button
+          style={{ marginTop: 5 }}
+          variant="contained"
+          color="primary"
+          type="submit"
+          onClick={handleSubmit}
+        >
           Add Comment
         </Button>
       </div>

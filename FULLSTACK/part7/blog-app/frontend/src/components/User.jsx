@@ -6,7 +6,7 @@ import {
   TableContainer,
   TableRow,
   Paper,
-} from '@mui/material';
+} from "@mui/material";
 import { useParams } from "react-router-dom";
 
 const User = ({ users }) => {
@@ -18,9 +18,11 @@ const User = ({ users }) => {
     <div>
       <TableContainer component={Paper}>
         <Table>
-        <TableHead>
+          <TableHead>
             <TableRow>
-              <TableCell style={{ fontWeight: 'bold', fontSize: 20 }}>{user.username}</TableCell>
+              <TableCell style={{ fontWeight: "bold", fontSize: 20 }}>
+                {user.username}
+              </TableCell>
             </TableRow>
           </TableHead>
           <TableBody>

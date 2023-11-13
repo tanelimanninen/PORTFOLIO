@@ -1,11 +1,11 @@
-import { Button } from '@mui/material';
-import { createTheme, ThemeProvider } from '@mui/material/styles';
+import { Button } from "@mui/material";
+import { createTheme, ThemeProvider } from "@mui/material/styles";
 
 //custom theme
 const theme = createTheme({
   palette: {
     secondary: {
-      main: '#ff1744',
+      main: "#ff1744",
     },
   },
 });
@@ -39,7 +39,11 @@ const Togglable = forwardRef((props, ref) => {
       <div style={showWhenVisible}>
         {props.children}
         <ThemeProvider theme={theme}>
-          <Button variant="contained" color="secondary" onClick={toggleVisibility}>
+          <Button
+            variant="contained"
+            color="secondary"
+            onClick={toggleVisibility}
+          >
             Cancel
           </Button>
         </ThemeProvider>

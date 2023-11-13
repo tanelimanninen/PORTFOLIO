@@ -1,3 +1,4 @@
+import { TextField, Button } from '@mui/material';
 import { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 
@@ -34,28 +35,28 @@ const LoginForm = () => {
 
       <form onSubmit={handleLogin}>
         <div>
-          Username:
-          <input
+          <TextField
             id="username"
-            type="text"
+            label="username"
+            type="username"
             value={username}
-            name="Username"
             onChange={({ target }) => setUsername(target.value)}
           />
         </div>
         <div>
-          Password:
-          <input
+          <TextField
             id="password"
+            label="password"
             type="password"
             value={password}
-            name="Password"
             onChange={({ target }) => setPassword(target.value)}
           />
         </div>
-        <button id="log-in-button" className="log-in-button" type="submit">
-          login
-        </button>
+        <div>
+          <Button variant="contained" color="primary" type="submit">
+            Login
+          </Button>
+        </div>
       </form>
     </div>
   );

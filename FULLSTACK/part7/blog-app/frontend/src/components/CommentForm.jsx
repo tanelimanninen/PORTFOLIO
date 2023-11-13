@@ -1,3 +1,4 @@
+import { TextField, Button } from '@mui/material';
 import { useState } from "react";
 import { useDispatch } from "react-redux";
 
@@ -19,6 +20,7 @@ const CommentForm = ({ blog }) => {
         setCommentText("");
         //SHOW SUCCESS MESSAGE
         dispatch(handleNotification("Added new comment", 5, "success"));
+        //GET ALL BLOGS WITH NEW COMMENT
         dispatch(initializeBlogs());
       } catch (error) {
         console.error("Failed to create comment:", error);
@@ -33,14 +35,21 @@ const CommentForm = ({ blog }) => {
   };
 
   return (
-    <div>
-      <input
-        type="text"
-        value={commentText}
-        onChange={handleCommentChange}
-        placeholder="Type comment here..."
-      />
-      <button onClick={handleSubmit}>Add Comment</button>
+    <div className='comment-form'>
+      <div>
+        <TextField
+          label="comment"
+          type="comment"
+          value={commentText}
+          onChange={handleCommentChange}
+        />
+      </div>
+
+      <div>
+        <Button style={{ marginTop: 5 }} variant="contained" color="primary" type="submit" onClick={handleSubmit}>
+          Add Comment
+        </Button>
+      </div>
     </div>
   );
 };

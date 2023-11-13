@@ -1,3 +1,4 @@
+import { TextField, Button } from '@mui/material';
 import { useState } from "react";
 
 const BlogForm = ({ createBlog }) => {
@@ -23,7 +24,48 @@ const BlogForm = ({ createBlog }) => {
       <h3>Create a new blog</h3>
 
       <form onSubmit={addBlog}>
+
         <div>
+          <TextField
+            id="blog-title"
+            label="title"
+            type="title"
+            value={newTitle}
+            onChange={(event) => setNewTitle(event.target.value)}
+          />
+        </div>
+        <div>
+          <TextField
+            id="blog-author"
+            label="author"
+            type="author"
+            value={newAuthor}
+            onChange={(event) => setNewAuthor(event.target.value)}
+          />
+        </div>
+        <div>
+          <TextField
+            id="blog-url"
+            label="url"
+            type="text"
+            value={newUrl}
+            onChange={(event) => setNewUrl(event.target.value)}
+          />
+        </div>
+        <div>
+          <Button style={{ marginTop: 5, marginBottom: 5 }} id="create-button" variant="contained" color="primary" type="submit">
+            Create
+          </Button>
+        </div>
+      </form>
+    </div>
+  );
+};
+
+export default BlogForm;
+
+/*
+          <div>
           Title:
           <input
             id="blog-title"
@@ -59,9 +101,4 @@ const BlogForm = ({ createBlog }) => {
         <button id="create-button" className="create-button" type="submit">
           Create
         </button>
-      </form>
-    </div>
-  );
-};
-
-export default BlogForm;
+*/

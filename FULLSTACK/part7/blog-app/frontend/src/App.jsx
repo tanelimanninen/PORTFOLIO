@@ -1,5 +1,21 @@
 //CSS STYLES
 import "./styles/App.css";
+//MATERIAL UI
+import { Container, Button } from '@mui/material'
+import { createTheme, ThemeProvider } from '@mui/material/styles';
+
+//custom theme
+const theme = createTheme({
+  palette: {
+    primary: {
+      main: '#ff1744',
+    },
+    secondary: {
+      main: '#ff1744',
+    },
+  },
+});
+
 //REACT LIBRARY IMPORTS
 import { useEffect, useRef } from "react";
 import { useDispatch, useSelector } from "react-redux";
@@ -101,42 +117,42 @@ const App = () => {
 
   if (user === null) {
     return (
-      <div>
+      <Container>
         {notification !== null && <Notification />}
 
         <LoginForm />
-      </div>
+      </Container>
     );
   }
 
   return (
-    <div>
-      <Menu />
+    <Container>
+        <Menu />
 
-      {notification !== null && <Notification />}
+        {notification !== null && <Notification />}
 
-      <h1>Blogs</h1>
+        <h1>Blogs</h1>
 
-      <p>{user.username} logged in</p>
+        <p>{user.username} logged in</p>
 
-      <button className="log-out-button" onClick={logOutUser}>
-        logout
-      </button>
+        <ThemeProvider theme={theme}>
+          <Button style={{ marginBottom: 5 }} variant="contained" color="secondary" onClick={logOutUser}>Log Out</Button>
+        </ThemeProvider>
 
-      <Routes>
-        <Route
-          path="/"
-          element={
-            <div>
-              {blogForm()} <BlogList />
-            </div>
-          }
-        />
-        <Route path="/blogs/:id" element={<Blog user={user} />} />
-        <Route path="/users" element={<Users users={users} />} />
-        <Route path="/users/:id" element={<User users={users} />} />
-      </Routes>
-    </div>
+        <Routes>
+          <Route
+            path="/"
+            element={
+              <div>
+                {blogForm()} <BlogList />
+              </div>
+            }
+          />
+          <Route path="/blogs/:id" element={<Blog user={user} />} />
+          <Route path="/users" element={<Users users={users} />} />
+          <Route path="/users/:id" element={<User users={users} />} />
+        </Routes>
+    </Container>
   );
 };
 

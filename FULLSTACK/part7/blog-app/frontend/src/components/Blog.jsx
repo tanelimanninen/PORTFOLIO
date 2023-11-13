@@ -1,3 +1,26 @@
+import {
+  Table,
+  TableBody,
+  TableCell,
+  TableContainer,
+  TableRow,
+  Paper,
+  Button
+} from '@mui/material';
+import { createTheme, ThemeProvider } from '@mui/material/styles';
+
+//custom theme
+const theme = createTheme({
+  palette: {
+    primary: {
+      main: '#ffc107',
+    },
+    secondary: {
+      main: '#ff1744',
+    },
+  },
+});
+
 import { useDispatch, useSelector } from "react-redux";
 import { useParams, useNavigate } from "react-router-dom";
 
@@ -37,11 +60,13 @@ const Blog = ({ user }) => {
 
     if (window.confirm("Remove blog?")) {
       try {
-        dispatch(cancelBlog(id));
+        await dispatch(cancelBlog(id));
         //SHOW SUCCESS MESSAGE
         dispatch(handleNotification("Blog deleted successfully", 5, "success"));
         //NAVIGATE BACK TO LIST VIEW
         navigate("/");
+        //GET ALL BLOGS WITH DATA AFTER DELETION
+        //dispatch(initializeBlogs());
       } catch (error) {
         console.error("Deletion failed", error);
         //SHOW ERROR MESSAGE
@@ -72,36 +97,41 @@ const Blog = ({ user }) => {
 
       <p>
         Likes: {blog.likes}
-        <button
-          id="like-button"
-          className="like-button"
-          onClick={() => updateLikes(blog.id)}
-        >
-          Like
-        </button>
+
+        <ThemeProvider theme={theme}>
+          <Button style={{ marginLeft: 5 }} variant="contained" color="primary" onClick={() => updateLikes(blog.id)}>Like</Button>
+        </ThemeProvider>
       </p>
 
       <p>Added by {blog.user.username}</p>
 
       {showDeleteButton() && (
-        <button
-          id="delete-button"
-          className="delete-button"
-          onClick={() => deleteBlog(blog.id)}
-        >
-          Delete
-        </button>
+        <ThemeProvider theme={theme}>
+          <Button variant="contained" color="secondary" onClick={() => deleteBlog(blog.id)}>Delete</Button>
+        </ThemeProvider>
       )}
 
       <h3>Comments</h3>
 
       <CommentForm blog={blog} />
 
-      {blog.comments?.length > 0 ? (
-        blog.comments.map((comment, index) => <p key={index}>{comment}</p>)
-      ) : (
-        <p>No added comments.</p>
-      )}
+      <TableContainer component={Paper}>
+        <Table>
+          <TableBody>
+          {blog.comments?.length > 0 ? (
+            blog.comments.map((comment, index) => (
+            <TableRow key={index}>
+              <TableCell>{comment}</TableCell>
+            </TableRow>
+            ))
+          )  : (
+            <TableRow>
+              <TableCell>No added comments.</TableCell>
+            </TableRow>
+          )}
+          </TableBody>
+        </Table>
+      </TableContainer>
     </div>
   );
 };

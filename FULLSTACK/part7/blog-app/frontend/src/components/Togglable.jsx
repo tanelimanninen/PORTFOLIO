@@ -1,3 +1,15 @@
+import { Button } from '@mui/material';
+import { createTheme, ThemeProvider } from '@mui/material/styles';
+
+//custom theme
+const theme = createTheme({
+  palette: {
+    secondary: {
+      main: '#ff1744',
+    },
+  },
+});
+
 import { useState, useImperativeHandle, forwardRef } from "react";
 import PropTypes from "prop-types";
 
@@ -20,15 +32,17 @@ const Togglable = forwardRef((props, ref) => {
   return (
     <div>
       <div style={hideWhenVisible}>
-        <button className="new-blog-button" onClick={toggleVisibility}>
+        <Button variant="contained" color="primary" onClick={toggleVisibility}>
           {props.buttonLabel}
-        </button>
+        </Button>
       </div>
       <div style={showWhenVisible}>
         {props.children}
-        <button className="cancel-button" onClick={toggleVisibility}>
-          cancel
-        </button>
+        <ThemeProvider theme={theme}>
+          <Button variant="contained" color="secondary" onClick={toggleVisibility}>
+            Cancel
+          </Button>
+        </ThemeProvider>
       </div>
     </div>
   );

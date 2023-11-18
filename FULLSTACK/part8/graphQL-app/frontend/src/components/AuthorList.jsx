@@ -7,10 +7,6 @@ const AuthorList = () => {
         pollInterval: 2000
     })
     
-    if (result.loading)  {
-        return <div>loading authors...</div>
-    }
-
     return (
         <div>
             <h2>Authors</h2>

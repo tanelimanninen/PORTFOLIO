@@ -18,6 +18,7 @@ const Menu = () => {
       <Link style={padding} to="/">Authors</Link>
       <Link style={padding} to="/books">Books</Link>
       <Link style={padding} to="/add_book">Add Book</Link>
+      <Link style={padding} to="/recommendations">Recommended</Link>
     </div>
   )
 }

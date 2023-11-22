@@ -3,7 +3,7 @@ import { useMutation } from '@apollo/client'
 import { 
     useNavigate
   } from 'react-router-dom'
-import { CREATE_BOOK } from '../queries'
+import { CREATE_BOOK, ALL_BOOKS } from '../queries'
 
 const BookForm = () => {
     const [title, setTitle] = useState('')
@@ -12,7 +12,15 @@ const BookForm = () => {
     const [genres, setGenres] = useState([])
     const genreInputRef = useRef(null);
 
-    const [ createBook ] = useMutation(CREATE_BOOK)
+    const [ createBook, { loading, error } ] = useMutation(CREATE_BOOK, {
+        update: (cache, response) => {
+            cache.updateQuery({ query: ALL_BOOKS }, ({ allBooks }) => {
+              return {
+                allBooks: allBooks.concat(response.data.addBook),
+              }
+            })
+          },
+    })
 
     const navigate = useNavigate()
 
@@ -34,24 +42,38 @@ const BookForm = () => {
 
         const yearAsInt = parseInt(published, 10);
 
-        createBook({ 
-            variables: { 
-                title,
-                author,
-                published: yearAsInt,
-                genres 
-            },
-        })
+        try {
+            await createBook({ 
+                variables: { 
+                    title,
+                    author,
+                    published: yearAsInt,
+                    genres
+                },
+            });
 
-        //CLEAR ALL INPUT AND GENRE-ARRAY FIELDS
-        setTitle('')
-        setAuthor('')
-        setPublished('')
-        setGenres([])
+            //CLEAR ALL INPUT AND GENRE-ARRAY FIELDS
+            setTitle('')
+            setAuthor('')
+            setPublished('')
+            setGenres([])
 
-        //NAVIGATE TO BOOKS-LIST VIEW
-        navigate('/books')
+            //NAVIGATE TO BOOKS-LIST VIEW
+            navigate('/books');
+        }
+        //ERROR MESSAGE
+        catch (error) {
+            console.error('Error creating book:', error.message);
+        }
     }
+
+    if (loading) {
+        return <div>Loading...</div>;
+      }
+      
+      if (error) {
+        return <div>Error: {error.message}</div>;
+      }
 
     return (
         <div>

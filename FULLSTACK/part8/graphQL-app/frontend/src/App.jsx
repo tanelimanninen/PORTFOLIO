@@ -4,8 +4,9 @@ import {
   Routes,
   Route
 } from 'react-router-dom'
-import { useQuery, useApolloClient } from '@apollo/client';
-import { ALL_AUTHORS } from './queries';
+import { useQuery, useApolloClient, useSubscription } from '@apollo/client';
+import { ALL_AUTHORS, BOOK_ADDED } from './queries';
+
 import LoginForm from './components/LoginForm';
 import Menu from './components/Menu';
 import AuthorList from './components/AuthorList';
@@ -25,6 +26,13 @@ const App = () => {
     client.resetStore()
   }
 
+  useSubscription(BOOK_ADDED, {
+    onData: ({ data }) => {
+      console.log(data)
+      window.alert(`"${data.data.bookAdded.title}" added!`)
+    }
+  })
+
   if (!token) {
     return (
       <div>
@@ -43,6 +51,7 @@ const App = () => {
   if (authorListError) {
     return <div>Error loading authors: {authorListError.message}</div>;
   }
+
 
   return (
     <div>

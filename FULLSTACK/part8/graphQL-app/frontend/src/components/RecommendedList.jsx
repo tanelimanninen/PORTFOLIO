@@ -42,9 +42,8 @@ const Books = ({ favoriteGenre }) => {
 
 const RecommendedList = () => {
     const { loading: userLoading, error: userError, data: userData } = useQuery(GET_USER);
-    //const [getRecommendedBooks, { loading, error, data }] = useLazyQuery(ALL_BOOKS);
 
-    console.log(userData)
+    //console.log(userData)
 
     if (userLoading) {
         return (

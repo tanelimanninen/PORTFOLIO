@@ -2,10 +2,14 @@ import '../App.css'
 import { useState } from 'react';
 import axios from 'axios';
 
-import { Weather, Visibility, ValidationError } from '../types';
+import { Weather, Visibility, ValidationError, DiaryEntry } from '../types';
 import { createDiary } from '../services/diaries';
 
-const Form = ({ setDiaries }) => {
+interface Props {
+  setDiaries:  React.Dispatch<React.SetStateAction<DiaryEntry[]>>
+}
+
+const Form = ({ setDiaries } : Props) => {
     const [date, setDate] = useState('');
     const [weather, setWeather] = useState(Weather.Default); //SET DEFAULT STATE FROM ENUM
     const [visibility, setVisibility] = useState(Visibility.Default); //SET DEFAULT STATE FROM ENUM

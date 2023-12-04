@@ -1,11 +1,13 @@
 import { useState } from "react";
 import { Box, Table, Button, TableHead, Typography, TableCell, TableRow, TableBody } from '@mui/material';
+import { Link } from 'react-router-dom';
 import axios from 'axios';
 
 import { PatientFormValues, Patient } from "../../types";
 import AddPatientModal from "../AddPatientModal";
 
 import HealthRatingBar from "../HealthRatingBar";
+import SinglePatient from "./SinglePatient";
 
 import patientService from "../../services/patients";
 
@@ -15,9 +17,10 @@ interface Props {
 }
 
 const PatientListPage = ({ patients, setPatients } : Props ) => {
-
   const [modalOpen, setModalOpen] = useState<boolean>(false);
+  const [selectedPatient, setSelectedPatient] = useState<Patient | null>(null);
   const [error, setError] = useState<string>();
+
 
   const openModal = (): void => setModalOpen(true);
 
@@ -25,6 +28,11 @@ const PatientListPage = ({ patients, setPatients } : Props ) => {
     setModalOpen(false);
     setError(undefined);
   };
+
+  const openSinglePatient = (patient: Patient) => {
+    setSelectedPatient(patient);
+  };
+
 
   const submitNewPatient = async (values: PatientFormValues) => {
     try {
@@ -66,7 +74,11 @@ const PatientListPage = ({ patients, setPatients } : Props ) => {
         <TableBody>
           {Object.values(patients).map((patient: Patient) => (
             <TableRow key={patient.id}>
-              <TableCell>{patient.name}</TableCell>
+              <TableCell>
+                <Link to={`/${patient.id}`} onClick={() => openSinglePatient(patient)}>
+                  {patient.name}
+                </Link>
+              </TableCell>
               <TableCell>{patient.gender}</TableCell>
               <TableCell>{patient.occupation}</TableCell>
               <TableCell>
@@ -85,6 +97,9 @@ const PatientListPage = ({ patients, setPatients } : Props ) => {
       <Button variant="contained" onClick={() => openModal()}>
         Add New Patient
       </Button>
+      {selectedPatient && (
+        <SinglePatient />
+      )}
     </div>
   );
 };

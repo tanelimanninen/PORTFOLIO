@@ -1,4 +1,10 @@
-const Table = ({ diaries }) => {
+import { DiaryEntry } from "../types";
+
+interface Props {
+    diaries: DiaryEntry[]
+}
+
+const Table = ({ diaries } : Props) => {
     return (
         <div>
             <table>

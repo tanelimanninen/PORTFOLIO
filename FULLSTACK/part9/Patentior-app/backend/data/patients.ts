@@ -57,7 +57,16 @@ const data = [
         ssn: '250470-555L',
         gender: Gender.Other,
         occupation: 'Technician',
-        entries: [],
+        entries: [
+          {
+            id: 'jkh13kj42kj3423k423kj4h23kj4h0000',
+            date: '2015-03-02',
+            specialist: 'Sorvankylän Sairaala',
+            type: 'HealthCheck',
+            description: 'This dude is fucked!',
+            healthCheckRating: 3,
+          },
+        ],
       },
       {
         id: 'd2773822-f723-11e9-8f0b-362b9e155667',

@@ -1,14 +1,22 @@
 import { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 
-import { Patient, Entry, Diagnosis } from '../../types';
+import { Patient, Entry, Diagnosis, HealthCheckEntry, HealthCheckRating } from '../../types';
 
 import MaleIcon from '@mui/icons-material/Male';
 import FemaleIcon from '@mui/icons-material/Female';
 import QuestionMarkIcon from '@mui/icons-material/QuestionMark';
+import LocalHospitalIcon from '@mui/icons-material/LocalHospital';
+import MonitorHeartIcon from '@mui/icons-material/MonitorHeart';
+import WorkIcon from '@mui/icons-material/Work';
+import Tooltip from '@mui/material/Tooltip';
+import FavoriteIcon from '@mui/icons-material/Favorite';
+
+import EntryDetails from './EntryDetails';
 
 import patientService from '../../services/patients';
 import diagnoseService from '../../services/diagnoses';
+
 
 const SinglePatient = () => {
     const { id } = useParams();
@@ -55,10 +63,62 @@ const SinglePatient = () => {
       }
     };
 
+    const entryTypeIcon = (entries: Entry[]) => {
+      return entries.map(entry => {
+        let icon;
+        let tooltipText;
+    
+        switch (entry.type) {
+          case 'Hospital':
+            icon = <LocalHospitalIcon />;
+            tooltipText = 'Hospital Entry';
+            break;
+          case 'HealthCheck':
+            icon = <MonitorHeartIcon />;
+            tooltipText = 'Health Check Entry';
+            break;
+          case 'OccupationalHealthcare':
+            icon = <WorkIcon />;
+            tooltipText = 'Occupational Healthcare Entry';
+            break;
+          default:
+            icon = null;
+            tooltipText = 'Unknown Entry';
+        }
+    
+        return (
+          <Tooltip key={entry.id} title={tooltipText} arrow>
+            {icon}
+          </Tooltip>
+        );
+      });
+    };
+
     const getDiagnosisName = (code: string) => {
       const diagnosis = diagnoses.find(d => d.code === code);
       
       return diagnosis ? diagnosis.name : 'Unknown';
+    };
+
+    const getHealthCheckIconColor = (entry: Entry): { color: string | null; tooltipText: string | null } => {
+      if (entry.type === 'HealthCheck') {
+        const healthCheckEntry = entry as HealthCheckEntry;
+        if (healthCheckEntry.healthCheckRating !== undefined) {
+        switch (healthCheckEntry.healthCheckRating) {
+          case HealthCheckRating.Healthy:
+            return { color: 'green', tooltipText: 'Healthy' };
+          case HealthCheckRating.LowRisk:
+            return { color: 'yellow', tooltipText: 'Low Risk' };
+          case HealthCheckRating.HighRisk:
+            return { color: 'orange', tooltipText: 'High Risk' };
+          case HealthCheckRating.CriticalRisk:
+            return { color: 'red', tooltipText: 'Critical Risk' };
+          default:
+            return { color: null, tooltipText: null };
+        }
+      }
+    }
+      return { color: null, tooltipText: null };
     };
 
     return (
@@ -72,13 +132,22 @@ const SinglePatient = () => {
             
             {patient.entries.map((entry: Entry) => (
               <div key={entry.id}>
-                <p>{entry.date} - - {entry.description}</p>
-
+                <p>{entryTypeIcon([entry])} {entry.date}</p>
+                <p>{entry.description}</p>
+                
+                {entry.type === 'HealthCheck' && (
+                  <Tooltip title={getHealthCheckIconColor(entry).tooltipText || ''} arrow>
+                    <FavoriteIcon style={{ color: getHealthCheckIconColor(entry).color || 'transparent' }} />
+                  </Tooltip>
+                )}
+  
                 {entry.diagnosisCodes?.map(code => (
                   <ul>
                     <li>{code} - - {getDiagnosisName(code)}</li>
                   </ul>
                 ))}
+
+                <EntryDetails entry={entry} />
               </div>
             ))}
         </div>

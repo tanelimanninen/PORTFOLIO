@@ -131,7 +131,7 @@ const SinglePatient = () => {
             <h2>Entries</h2>
             
             {patient.entries.map((entry: Entry) => (
-              <div key={entry.id}>
+              <div key={entry.id} id='entry'>
                 <p>{entryTypeIcon([entry])} {entry.date}</p>
                 <p>{entry.description}</p>
                 

@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 449.28 402.96">
+  <defs>
+    <style>
+      .cls-1 {
+        opacity: .93;
+      }
+
+      .cls-1, .cls-2, .cls-3, .cls-4, .cls-5 {
+        stroke-width: 0px;
+      }
+
+      .cls-1, .cls-5 {
+        fill: #fff;
+      }
+
+      .cls-2 {
+        filter: url(#drop-shadow-2);
+      }
+
+      .cls-2, .cls-4 {
+        fill: #222221;
+      }
+
+      .cls-2, .cls-4, .cls-5 {
+        opacity: .95;
+      }
+
+      .cls-3 {
+        fill: #cd5b2a;
+      }
+
+      .cls-4 {
+        filter: url(#drop-shadow-1);
+      }
+    </style>
+    <filter id="drop-shadow-1" filterUnits="userSpaceOnUse">
+      <feOffset dx="4" dy="1"/>
+      <feGaussianBlur result="blur" stdDeviation="10"/>
+      <feFlood flood-color="#222221" flood-opacity=".7"/>
+      <feComposite in2="blur" operator="in"/>
+      <feComposite in="SourceGraphic"/>
+    </filter>
+    <filter id="drop-shadow-2" filterUnits="userSpaceOnUse">
+      <feOffset dx="4" dy="1"/>
+      <feGaussianBlur result="blur-2" stdDeviation="10"/>
+      <feFlood flood-color="#222221" flood-opacity=".7"/>
+      <feComposite in2="blur-2" operator="in"/>
+      <feComposite in="SourceGraphic"/>
+    </filter>
+  </defs>
+  <g id="ALA-NUOLI">
+    <polyline class="cls-4" points="222.51 294.78 291.96 371.88 291.96 294.78"/>
+  </g>
+  <g id="ALA-KUUTIO">
+    <rect class="cls-2" x="26.15" y="29.14" width="389.11" height="266.55" rx="50.04" ry="50.04"/>
+  </g>
+  <g id="NUOLI">
+    <polyline class="cls-3" points="218.92 290.79 288.37 367.89 288.37 290.79"/>
+  </g>
+  <g id="KUUTIO">
+    <rect class="cls-3" x="24.36" y="25.13" width="389.11" height="266.55" rx="50.04" ry="50.04"/>
+  </g>
+  <g id="VIIVA_LYHYEMPI" data-name="VIIVA LYHYEMPI">
+    <rect class="cls-5" x="119.85" y="168.62" width="100.85" height="30.04" rx="15.02" ry="15.02"/>
+  </g>
+  <g id="VIIVA_PIDEMPI" data-name="VIIVA PIDEMPI">
+    <rect class="cls-1" x="119.85" y="106.58" width="156.26" height="30.04" rx="15.02" ry="15.02"/>
+  </g>
+</svg>
